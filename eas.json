@@ -1,0 +1,97 @@
+{
+  "cli": {
+    "version": ">= 16.3.1",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "production": {
+      "channel": "production",
+      "distribution": "store",
+      "pnpm": "9.12.3",
+      "autoIncrement": true,
+      "ios": {
+        "image": "latest"
+      },
+      "android": {
+        "buildType": "app-bundle",
+        "image": "latest"
+      },
+      "env": {
+        "EXPO_NO_DOTENV": "1",
+        "APP_ENV": "production",
+        "FLIPPER_DISABLE": "1",
+        "EXPO_PUBLIC_CONTINUE_CONVERSATION_ENDPOINT": "EXPO_PUBLIC_CONTINUE_CONVERSATION_ENDPOINT_CI",
+        "EXPO_PUBLIC_ANALYZE_SCAN_IMAGE_CONVERSATION": "EXPO_PUBLIC_ANALYZE_SCAN_IMAGE_CONVERSATION_CI",
+        "EXPO_PUBLIC_REVENUE_CAT_API_KEYS_GOOGLE": "EXPO_PUBLIC_REVENUE_CAT_API_KEYS_GOOGLE_CI",
+        "EXPO_PUBLIC_REVENUE_CAT_API_KEYS_APPLE": "EXPO_PUBLIC_REVENUE_CAT_API_KEYS_APPLE_CI"
+      }
+    },
+    "staging": {
+      "channel": "staging",
+      "distribution": "internal",
+      "pnpm": "9.12.3",
+      "autoIncrement": true,
+      "ios": {
+        "image": "latest"
+      },
+      "android": {
+        "buildType": "apk",
+        "image": "latest"
+      },
+      "env": {
+        "APP_ENV": "production", // !don't change it to staging for now otherwise eas build will request a .env.staging file
+        "EXPO_NO_DOTENV": "1",
+        "FLIPPER_DISABLE": "1",
+        "EXPO_PUBLIC_CONTINUE_CONVERSATION_ENDPOINT": "EXPO_PUBLIC_CONTINUE_CONVERSATION_ENDPOINT_CI",
+        "EXPO_PUBLIC_ANALYZE_SCAN_IMAGE_CONVERSATION": "EXPO_PUBLIC_ANALYZE_SCAN_IMAGE_CONVERSATION_CI",
+        "EXPO_PUBLIC_REVENUE_CAT_API_KEYS_GOOGLE": "EXPO_PUBLIC_REVENUE_CAT_API_KEYS_GOOGLE_CI",
+        "EXPO_PUBLIC_REVENUE_CAT_API_KEYS_APPLE": "EXPO_PUBLIC_REVENUE_CAT_API_KEYS_APPLE_CI"
+      }
+    },
+    "development": {
+      "developmentClient": false,
+      "distribution": "internal",
+      "autoIncrement": true,
+      "pnpm": "9.12.3",
+      "ios": {
+        "image": "latest"
+      },
+      "android": {
+        "image": "latest"
+      },
+      "env": {
+        "APP_ENV": "development",
+        "EXPO_NO_DOTENV": "1"
+      }
+    },
+    "simulator": {
+      "pnpm": "9.12.3",
+      "ios": {
+        "simulator": true,
+        "image": "latest"
+      },
+      "android": {
+        "image": "latest"
+      },
+      "env": {
+        "APP_ENV": "development",
+        "EXPO_NO_DOTENV": "1",
+        "EXPO_PUBLIC_CONTINUE_CONVERSATION_ENDPOINT": "EXPO_PUBLIC_CONTINUE_CONVERSATION_ENDPOINT_CI",
+        "EXPO_PUBLIC_ANALYZE_SCAN_IMAGE_CONVERSATION": "EXPO_PUBLIC_ANALYZE_SCAN_IMAGE_CONVERSATION_CI",
+        "EXPO_PUBLIC_REVENUE_CAT_API_KEYS_GOOGLE": "EXPO_PUBLIC_REVENUE_CAT_API_KEYS_GOOGLE_CI",
+        "EXPO_PUBLIC_REVENUE_CAT_API_KEYS_APPLE": "EXPO_PUBLIC_REVENUE_CAT_API_KEYS_APPLE_CI"
+      }
+    }
+  },
+  "submit": {
+    "production": {
+      "android": {
+        "track": "internal",
+        "releaseStatus": "draft"
+      },
+      "ios": {
+        "ascAppId": "6749510101" //Apple ID from app information tab in app store connect, move to env file in the future if it's possible
+      }
+    }
+  }
+}
