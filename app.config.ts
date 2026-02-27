@@ -1,226 +1,124 @@
-/* eslint-disable max-lines-per-function */
-import type { ConfigContext, ExpoConfig } from "@expo/config";
-import type { AppIconBadgeConfig } from "app-icon-badge/types";
+import type { ConfigContext, ExpoConfig } from '@expo/config';
 
-// Update the import path to a relative path if the file exists at that location
-import { ClientEnv, Env } from "./env";
+import type { AppIconBadgeConfig } from 'app-icon-badge/types';
+
+import 'tsx/cjs';
+
+// adding lint exception as we need to import tsx/cjs before env.ts is imported
+// eslint-disable-next-line perfectionist/sort-imports
+import Env from './env';
+
+const EXPO_ACCOUNT_OWNER = 'bazdevelopment';
+const EAS_PROJECT_ID = 'f9f6269b-8442-4a79-be81-dc6f0974b82a';
 
 const appIconBadgeConfig: AppIconBadgeConfig = {
-  enabled: Env.APP_ENV !== "production",
+  enabled: Env.EXPO_PUBLIC_APP_ENV !== 'production',
   badges: [
     {
-      text: Env.APP_ENV,
-      type: "banner",
-      color: "white",
+      text: Env.EXPO_PUBLIC_APP_ENV,
+      type: 'banner',
+      color: 'white',
     },
     {
-      text: Env.VERSION.toString(),
-      type: "ribbon",
-      color: "white",
+      text: Env.EXPO_PUBLIC_VERSION.toString(),
+      type: 'ribbon',
+      color: 'white',
     },
   ],
 };
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
-  name: Env.NAME,
-  description: `${Env.NAME} Mobile App`,
-  owner: "bazdevelopment",
-  scheme: Env.SCHEME,
-  slug: "exfit-ai",
-  version: Env.VERSION.toString(),
-  orientation: "portrait",
-  icon: "./assets/icon-5.png",
-  userInterfaceStyle: "dark",
+  name: Env.EXPO_PUBLIC_NAME,
+  description: `${Env.EXPO_PUBLIC_NAME} Mobile App`,
+  owner: EXPO_ACCOUNT_OWNER,
+  scheme: Env.EXPO_PUBLIC_SCHEME,
+  slug: 'poopaiapp',
+  version: Env.EXPO_PUBLIC_VERSION.toString(),
+  orientation: 'portrait',
+  icon: './assets/icon.png',
+  userInterfaceStyle: 'automatic',
   newArchEnabled: true,
   updates: {
     fallbackToCacheTimeout: 0,
   },
-  assetBundlePatterns: ["**/*"],
-  // platforms: ['ios', 'android'],
-
+  assetBundlePatterns: ['**/*'],
   ios: {
-    appStoreUrl:
-      "https://apps.apple.com/us/app/fitness-ai-coach-exfit/id6749510101",
     supportsTablet: true,
-    bundleIdentifier: Env.BUNDLE_ID,
-    googleServicesFile: ClientEnv.GOOGLE_SERVICES_PLIST_PATH,
-    // associatedDomains: [
-    //   'applinks:exfit-ai-dev-9d0fe.firebaseapp.com', // Important for iOS Universal Links
-    //   'applinks:exfit-ai-dev-9d0fe.firebaseapp.com/scan',
-    // ],
-    config: {
-      usesNonExemptEncryption: false, // Avoid the export compliance warning on the app store
-    },
+    bundleIdentifier: Env.EXPO_PUBLIC_BUNDLE_ID,
     infoPlist: {
-      CFBundleAllowMixedLocalizations: true,
-      CFBundleLocalizations: [
-        "de", // German
-        "tr", // Turkish
-        "fr", // French
-        "it", // Italian
-        "pt-PT", // Portuguese (Portugal)
-        "ar", // Arabic
-        "es-ES", // Spanish (Spain)
-        "es-MX", // Spanish (Mexico)
-        "hi", // Hindi
-        "ro", // Romanian
-        "uk", // Ukrainian
-        "ru", // Russian
-        "th", // Thai
-        "id", // Indonesian
-        "he", // Hebrew
-        "ja", // Japanese
-        "ko", // Korean
-        "zh", // Chinese (Simplified)
-        "no", // Norwegian
-        "pl", // Polish
-        "sv", // Swedish
-        "en", // English
-        "fr-CA", // French (Canada)
-        "pt-BR", // Portuguese (Brazil)
-        "vi", // Vietnamese
-        "nl", // Dutch
-        "cs", // Czech
-        "el", // Greek
-        "hu", // Hungarian
-        "ms", // Malay
-        "fi", // Finnish
-        "da", // Danish
-        "sk", // Slovak
-        "hr", // Croatian
-        "ca", // Catalan
-      ],
-      CFBundleDevelopmentRegion: "en", // Default language, adjust if needed
+      ITSAppUsesNonExemptEncryption: false,
     },
   },
   experiments: {
     typedRoutes: true,
   },
   android: {
-    softwareKeyboardLayoutMode: "pan",
-    playStoreUrl: "https://play.google.com/store/apps/details?id=com.exfit",
-    googleServicesFile: ClientEnv.GOOGLE_SERVICES_JSON_PATH,
     adaptiveIcon: {
-      foregroundImage: "./assets/adaptive-icon-4.png",
-      backgroundColor: "#3b82f6",
+      foregroundImage: './assets/adaptive-icon.png',
+      backgroundColor: '#2E3C4B',
     },
-    package: Env.PACKAGE,
-    intentFilters: [
-      {
-        action: "VIEW",
-        data: [
-          {
-            scheme: "https",
-            host: "exfit-ai-dev-9d0fe.firebaseapp.com",
-            pathPrefix: "/completeLogin", // This is important to match your Firebase link path
-          },
-          {
-            scheme: "exfit", // Your custom scheme for Android
-          },
-        ],
-        category: ["BROWSABLE", "DEFAULT"],
-      },
-    ],
+    package: Env.EXPO_PUBLIC_PACKAGE,
   },
   web: {
-    favicon: "./assets/favicon.png",
-    bundler: "metro",
+    favicon: './assets/favicon.png',
+    bundler: 'metro',
   },
   plugins: [
     [
-      "expo-quick-actions",
+      'expo-splash-screen',
       {
-        androidIcons: {
-          heart_icon: {
-            foregroundImage: "./assets/heart-icon-android.png",
-            backgroundColor: "#FFFFFF",
-          },
-        },
-        iosIcons: {
-          heart_icon: "./assets/heart-icon-ios.png",
-        },
-      },
-    ],
-    [
-      "expo-notifications",
-      {
-        icon: "./assets/icon_notification_96x96_2.png",
-        color: "#1d1e3c",
-        defaultChannel: "default",
-      },
-    ],
-    [
-      "expo-image-picker",
-      {
-        photosPermission:
-          "Allow $(PRODUCT_NAME) to access your photo library to upload media for AI analysis, providing insights and feedback for informational purposes.",
-        cameraPermission:
-          "Allow $(PRODUCT_NAME) to access your camera to capture images for AI-powered analysis, providing insights and feedback for informational purposes.",
-        //'Disables the microphone permission',
-        microphonePermission: false,
-      },
-    ],
-    [
-      "expo-document-picker",
-      {
-        iCloudContainerEnvironment: "Production",
-      },
-    ],
-    [
-      "expo-splash-screen",
-      {
-        backgroundColor: "#000000",
-        image: "./assets/icon-5.png",
+        backgroundColor: '#2E3C4B',
+        image: './assets/splash-icon.png',
         imageWidth: 150,
       },
     ],
     [
-      "expo-font",
+      'expo-font',
       {
-        fonts: ["./assets/fonts/Inter.ttf"],
-      },
-    ],
-    [
-      "expo-build-properties",
-      {
-        android: {
-          compileSdkVersion: 35,
-          targetSdkVersion: 35,
-          buildToolsVersion: "35.0.0",
-        },
         ios: {
-          useFrameworks: "static",
+          fonts: [
+            'node_modules/@expo-google-fonts/inter/400Regular/Inter_400Regular.ttf',
+            'node_modules/@expo-google-fonts/inter/500Medium/Inter_500Medium.ttf',
+            'node_modules/@expo-google-fonts/inter/600SemiBold/Inter_600SemiBold.ttf',
+            'node_modules/@expo-google-fonts/inter/700Bold/Inter_700Bold.ttf',
+          ],
         },
-      },
-    ],
-    "expo-localization",
-    "expo-router",
-    "@react-native-firebase/app",
-    "@react-native-firebase/auth",
-    "@react-native-firebase/crashlytics",
-    ["app-icon-badge", appIconBadgeConfig],
-    [
-      "react-native-edge-to-edge",
-      {
         android: {
-          parentTheme: "Default",
-          enforceNavigationBarContrast: false,
+          fonts: [
+            {
+              fontFamily: 'Inter',
+              fontDefinitions: [
+                {
+                  path: 'node_modules/@expo-google-fonts/inter/400Regular/Inter_400Regular.ttf',
+                  weight: 400,
+                },
+                {
+                  path: 'node_modules/@expo-google-fonts/inter/500Medium/Inter_500Medium.ttf',
+                  weight: 500,
+                },
+                {
+                  path: 'node_modules/@expo-google-fonts/inter/600SemiBold/Inter_600SemiBold.ttf',
+                  weight: 600,
+                },
+                {
+                  path: 'node_modules/@expo-google-fonts/inter/700Bold/Inter_700Bold.ttf',
+                  weight: 700,
+                },
+              ],
+            },
+          ],
         },
       },
     ],
-    [
-      "expo-camera",
-      {
-        cameraPermission:
-          "Allow $(PRODUCT_NAME) to access your camera to capture images for AI analysis",
-      },
-    ],
+    'expo-localization',
+    'expo-router',
+    ['app-icon-badge', appIconBadgeConfig],
+    ['react-native-edge-to-edge'],
   ],
   extra: {
-    ...ClientEnv,
     eas: {
-      projectId: Env.EAS_PROJECT_ID,
+      projectId: EAS_PROJECT_ID,
     },
   },
 });

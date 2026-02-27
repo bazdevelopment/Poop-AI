@@ -1,27 +1,22 @@
-import { type BottomSheetModal } from '@gorhom/bottom-sheet';
-import { BlurView } from '@react-native-community/blur';
-import { FlashList } from '@shopify/flash-list';
-import { useColorScheme } from 'nativewind';
-import * as React from 'react';
-import type { FieldValues } from 'react-hook-form';
-import { useController } from 'react-hook-form';
-import { ActivityIndicator, View } from 'react-native';
-import { Pressable, type PressableProps } from 'react-native';
-import { StyleSheet } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+/* eslint-disable better-tailwindcss/no-unknown-classes */
+import type { BottomSheetModal } from '@gorhom/bottom-sheet';
+import type { PressableProps } from 'react-native';
 import type { SvgProps } from 'react-native-svg';
+import {
+  BottomSheetFlatList,
+
+} from '@gorhom/bottom-sheet';
+import { FlashList } from '@shopify/flash-list';
+import * as React from 'react';
+import { Platform, Pressable, View } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 import { tv } from 'tailwind-variants';
 
-import { translate } from '@/core';
+import { useUniwind } from 'uniwind';
+import colors from '@/components/ui/colors';
 
-import SelectableButton from '../selectable-button';
-import { CaretDown } from './assets/icons';
-import { Checkbox, Radio } from './checkbox';
-import colors from './colors';
-import type { InputControllerType } from './input';
-import { useModal } from './modal';
-import { Modal } from './modal';
+import { CaretDown } from '@/components/ui/icons';
+import { Modal, useModal } from './modal';
 import { Text } from './text';
 
 const selectTv = tv({
@@ -29,7 +24,7 @@ const selectTv = tv({
     container: 'mb-4',
     label: 'text-grey-100 mb-1 text-lg dark:text-neutral-100',
     input:
-      'border-grey-50 mt-0 flex-row items-center justify-center rounded-xl border-[0.5px] p-3  dark:border-neutral-500 dark:bg-neutral-800',
+      'border-grey-50 mt-0 flex-row items-center justify-center rounded-xl border-[0.5px] p-3 dark:border-neutral-500 dark:bg-neutral-800',
     inputValue: 'dark:text-neutral-100',
   },
 
@@ -58,7 +53,7 @@ const selectTv = tv({
   },
 });
 
-const List = FlashList;
+const List = Platform.OS === 'web' ? FlashList : BottomSheetFlatList;
 
 export type OptionType = { label: string; value: string | number };
 
@@ -73,61 +68,44 @@ function keyExtractor(item: OptionType) {
   return `select-item-${item.value}`;
 }
 
-export const Options = React.forwardRef<BottomSheetModal, OptionsProps>(
-  ({ options, onSelect, value, isPending, testID, heading }, ref) => {
-    const height = '90%';
-    const snapPoints = React.useMemo(() => [height, '90%'], [height]);
-    const { colorScheme } = useColorScheme();
-    const isDark = colorScheme === 'dark';
+export function Options({ ref, options, onSelect, value, testID }: OptionsProps & { ref?: React.RefObject<BottomSheetModal | null> }) {
+  const height = options.length * 70 + 100;
+  const snapPoints = React.useMemo(() => [height], [height]);
+  const { theme } = useUniwind();
+  const isDark = theme === 'dark';
 
-    const renderSelectItem = React.useCallback(
-      ({ item }: { item: OptionType }) => (
-        <SelectableButton
-          key={`select-item-${item.value}`}
-          text={item.label}
-          isSelected={value === item.value}
-          onPress={() => onSelect(item)}
-          testID={testID ? `${testID}-item-${item.value}` : undefined}
-          icon={item.icon}
-          className="bg-white/5 dark:bg-white/5"
-        />
-      ),
-      [onSelect, value, testID]
-    );
+  const renderSelectItem = React.useCallback(
+    ({ item }: { item: OptionType }) => (
+      <Option
+        key={`select-item-${item.value}`}
+        label={item.label}
+        selected={value === item.value}
+        onPress={() => onSelect(item)}
+        testID={testID ? `${testID}-item-${item.value}` : undefined}
+      />
+    ),
+    [onSelect, value, testID],
+  );
 
-    return (
-      <Modal
-        ref={ref}
-        index={0}
-        // title={heading}
-        snapPoints={snapPoints}
-        backgroundStyle={{
-          backgroundColor: colors.transparent,
-        }}
-      >
-        <BlurView
-          blurAmount={10}
-          blurType="dark"
-          style={[StyleSheet.absoluteFill]}
-        />
-        {isPending && <ActivityIndicator size="small" />}
-        <Text className="my-4 text-center font-semibold-poppins">
-          {translate('settings.language')}
-        </Text>
-        <List
-          contentContainerStyle={{ paddingBottom: 100 }}
-          showsVerticalScrollIndicator={false}
-          data={options}
-          keyExtractor={keyExtractor}
-          renderItem={renderSelectItem}
-          testID={testID ? `${testID}-modal` : undefined}
-          estimatedItemSize={52}
-          renderScrollComponent={ScrollView}
-        />
-      </Modal>
-    );
-  }
-);
+  return (
+    <Modal
+      ref={ref}
+      index={0}
+      snapPoints={snapPoints}
+      backgroundStyle={{
+        backgroundColor: isDark ? colors.neutral[800] : colors.white,
+      }}
+    >
+      <List
+        data={options}
+        keyExtractor={keyExtractor}
+        renderItem={renderSelectItem}
+        testID={testID ? `${testID}-modal` : undefined}
+        estimatedItemSize={52}
+      />
+    </Modal>
+  );
+}
 
 const Option = React.memo(
   ({
@@ -143,14 +121,14 @@ const Option = React.memo(
         className="flex-row items-center border-b border-neutral-300 bg-white px-3 py-2 dark:border-neutral-700 dark:bg-neutral-800"
         {...props}
       >
-        <Text className="flex-1 dark:text-neutral-100 ">{label}</Text>
+        <Text className="flex-1 dark:text-neutral-100">{label}</Text>
         {selected && <Check />}
       </Pressable>
     );
-  }
+  },
 );
 
-export interface SelectProps {
+export type SelectProps = {
   value?: string | number;
   label?: string;
   disabled?: boolean;
@@ -159,12 +137,9 @@ export interface SelectProps {
   onSelect?: (value: string | number) => void;
   placeholder?: string;
   testID?: string;
-}
-interface ControlledSelectProps<T extends FieldValues>
-  extends SelectProps,
-    InputControllerType<T> {}
+};
 
-export const Select = (props: SelectProps) => {
+export function Select(props: SelectProps) {
   const {
     label,
     value,
@@ -182,7 +157,7 @@ export const Select = (props: SelectProps) => {
       onSelect?.(option.value);
       modal.dismiss();
     },
-    [modal, onSelect]
+    [modal, onSelect],
   );
 
   const styles = React.useMemo(
@@ -191,15 +166,15 @@ export const Select = (props: SelectProps) => {
         error: Boolean(error),
         disabled,
       }),
-    [error, disabled]
+    [error, disabled],
   );
 
   const textValue = React.useMemo(
     () =>
       value !== undefined
-        ? (options?.filter((t) => t.value === value)?.[0]?.label ?? placeholder)
+        ? (options?.filter(t => t.value === value)?.[0]?.label ?? placeholder)
         : placeholder,
-    [value, options, placeholder]
+    [value, options, placeholder],
   );
 
   return (
@@ -241,136 +216,24 @@ export const Select = (props: SelectProps) => {
       />
     </>
   );
-};
-
-// only used with react-hook-form
-export function ControlledSelect<T extends FieldValues>(
-  props: ControlledSelectProps<T>
-) {
-  const { name, control, rules, onSelect: onNSelect, ...selectProps } = props;
-
-  const { field, fieldState } = useController({ control, name, rules });
-  const onSelect = React.useCallback(
-    (value: string | number) => {
-      field.onChange(value);
-      onNSelect?.(value);
-    },
-    [field, onNSelect]
-  );
-  return (
-    <Select
-      onSelect={onSelect}
-      value={field.value}
-      error={fieldState.error?.message}
-      {...selectProps}
-    />
-  );
 }
 
-const Check = ({ ...props }: SvgProps) => (
-  <Svg
-    width={25}
-    height={24}
-    fill="none"
-    viewBox="0 0 25 24"
-    {...props}
-    className="stroke-black dark:stroke-white"
-  >
-    <Path
-      d="m20.256 6.75-10.5 10.5L4.506 12"
-      strokeWidth={2.438}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </Svg>
-);
-
-const indicatorsType = {
-  checkbox: Checkbox,
-  radio: Radio,
-};
-
-export const SelectableLabel = ({
-  title,
-  selected = false,
-  icon,
-  showIndicator = true,
-  subtitle,
-  onPress,
-  additionalClassName,
-  titleClassName,
-  subtitleClassName,
-  indicatorPosition = 'right',
-  indicatorType = 'radio',
-  extraInfo,
-  ...props
-}: ISelectableLabel) => {
-  const Indicator = indicatorsType[indicatorType];
+function Check({ ...props }: SvgProps) {
   return (
-    <Pressable
-      className={`
-        mt-4 flex-row items-center gap-4 rounded-2xl
-        p-6
-        ${selected ? 'border-[3px] border-primary-500' : 'bg-primary-100 dark:bg-blackEerie'}
-        active:bg-gray-100 dark:active:bg-primary-700
-        ${additionalClassName}
-      `}
-      onPress={onPress}
+    <Svg
+      width={25}
+      height={24}
+      fill="none"
+      viewBox="0 0 25 24"
       {...props}
+      className="stroke-black dark:stroke-white"
     >
-      {showIndicator && indicatorPosition === 'left' && (
-        <Indicator
-          disabled={false}
-          onPress={onPress}
-          checked={selected}
-          testID="radio"
-          accessibilityLabel="Agree"
-          accessibilityHint="toggle Agree"
-        />
-      )}
-      <View className="flex-1 flex-row items-center">
-        {icon && <View className="items-center justify-center">{icon}</View>}
-        <View className="gap-2">
-          <Text
-            className={`
-            text-base
-            ${selected ? 'font-medium-poppins text-lg text-white' : 'font-medium-poppins text-lg'}
-         ${titleClassName}
-          `}
-          >
-            {title}
-          </Text>
-
-          {subtitle && (
-            <Text
-              className={`
-            ${selected ? 'text-md font-bold-poppins text-white' : ' text-md'}
-            ${subtitleClassName}
-          `}
-            >
-              {subtitle}
-            </Text>
-          )}
-        </View>
-      </View>
-      {!!extraInfo && (
-        <View
-          className={`absolute right-2 top-[10px] flex-row items-center gap-2 rounded-xl bg-primary-500 px-5 py-1 ${selected ? 'dark:bg-blackEerie' : 'dark:border dark:border-primary-800 dark:bg-blackEerie'}`}
-        >
-          <Text className="font-bold-poppins">{extraInfo}</Text>
-        </View>
-      )}
-
-      {showIndicator && indicatorPosition === 'right' && (
-        <Indicator
-          disabled={false}
-          onChange={onPress}
-          checked={selected}
-          testID="radio"
-          accessibilityLabel="Agree"
-          accessibilityHint="toggle Agree"
-        />
-      )}
-    </Pressable>
+      <Path
+        d="m20.256 6.75-10.5 10.5L4.506 12"
+        strokeWidth={2.438}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </Svg>
   );
-};
+}
