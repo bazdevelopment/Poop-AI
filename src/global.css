@@ -5,7 +5,10 @@
 /* Define your theme in CSS (replaces tailwind.config.js) */
 @theme {
   /* Font families */
-  --font-family-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-primary-poppins: 'Poppins_400Regular';
+  --font-medium-poppins: 'Poppins_500Medium';
+  --font-semibold-poppins: 'Poppins_600SemiBold';
+  --font-bold-poppins: 'Poppins_700Bold';
 
   /* Base colors */
   --color-white: #ffffff;
@@ -124,5 +127,27 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@layer base {
+  .font-primary-poppins {
+    font-family: var(--font-primary-poppins);
+    font-weight: 400;
+  }
+
+  .font-medium-poppins{
+    font-family: var(--font-medium-poppins);
+    font-weight: 500;
+  }
+
+  .font-semibold-poppins {
+    font-family: var(--font-semibold-poppins);
+    font-weight: 600;
+  }
+
+  .font-bold-poppins {
+    font-family: var(--font-bold-poppins);
+    font-weight: 700;
   }
 }

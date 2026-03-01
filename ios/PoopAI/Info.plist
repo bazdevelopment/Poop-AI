@@ -28,7 +28,7 @@
         <key>CFBundleURLSchemes</key>
         <array>
           <string>Poop AI</string>
-          <string>com.poopai.development</string>
+          <string>com.poopai</string>
         </array>
       </dict>
       <dict>
@@ -65,6 +65,10 @@
       <string>Inter_500Medium.ttf</string>
       <string>Inter_600SemiBold.ttf</string>
       <string>Inter_700Bold.ttf</string>
+      <string>Poppins_400Regular.ttf</string>
+      <string>Poppins_500Medium.ttf</string>
+      <string>Poppins_600SemiBold.ttf</string>
+      <string>Poppins_700Bold.ttf</string>
     </array>
     <key>UILaunchStoryboardName</key>
     <string>SplashScreen</string>

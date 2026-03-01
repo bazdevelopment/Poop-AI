@@ -56,7 +56,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   android: {
     adaptiveIcon: {
       foregroundImage: './assets/adaptive-icon.png',
-      backgroundColor: '#2E3C4B',
+      backgroundColor: '#895129',
     },
     package: Env.EXPO_PUBLIC_PACKAGE,
   },
@@ -68,8 +68,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     [
       'expo-splash-screen',
       {
-        backgroundColor: '#2E3C4B',
-        image: './assets/splash-icon.png',
+        backgroundColor: '#895129',
+        image: './assets/icon.png',
         imageWidth: 150,
       },
     ],
@@ -78,31 +78,31 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       {
         ios: {
           fonts: [
-            'node_modules/@expo-google-fonts/inter/400Regular/Inter_400Regular.ttf',
-            'node_modules/@expo-google-fonts/inter/500Medium/Inter_500Medium.ttf',
-            'node_modules/@expo-google-fonts/inter/600SemiBold/Inter_600SemiBold.ttf',
-            'node_modules/@expo-google-fonts/inter/700Bold/Inter_700Bold.ttf',
+            'node_modules/@expo-google-fonts/poppins/400Regular/Poppins_400Regular.ttf',
+            'node_modules/@expo-google-fonts/poppins/500Medium/Poppins_500Medium.ttf',
+            'node_modules/@expo-google-fonts/poppins/600SemiBold/Poppins_600SemiBold.ttf',
+            'node_modules/@expo-google-fonts/poppins/700Bold/Poppins_700Bold.ttf',
           ],
         },
         android: {
           fonts: [
             {
-              fontFamily: 'Inter',
+              fontFamily: 'Poppins',
               fontDefinitions: [
                 {
-                  path: 'node_modules/@expo-google-fonts/inter/400Regular/Inter_400Regular.ttf',
+                  path: 'node_modules/@expo-google-fonts/poppins/400Regular/Poppins_400Regular.ttf',
                   weight: 400,
                 },
                 {
-                  path: 'node_modules/@expo-google-fonts/inter/500Medium/Inter_500Medium.ttf',
+                  path: 'node_modules/@expo-google-fonts/poppins/500Medium/Poppins_500Medium.ttf',
                   weight: 500,
                 },
                 {
-                  path: 'node_modules/@expo-google-fonts/inter/600SemiBold/Inter_600SemiBold.ttf',
+                  path: 'node_modules/@expo-google-fonts/poppins/600SemiBold/Poppins_600SemiBold.ttf',
                   weight: 600,
                 },
                 {
-                  path: 'node_modules/@expo-google-fonts/inter/700Bold/Inter_700Bold.ttf',
+                  path: 'node_modules/@expo-google-fonts/poppins/700Bold/Poppins_700Bold.ttf',
                   weight: 700,
                 },
               ],

@@ -10,18 +10,24 @@
 		0E871AE69023427D883C1CA7 /* Inter_400Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A30581382F7243B0A2946F68 /* Inter_400Regular.ttf */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
+		78871BB189564334AF236CE2 /* Poppins_400Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0B5B23A9C43C4AD4B4B0109D /* Poppins_400Regular.ttf */; };
 		85B0E5955C6867ED9BF71A4A /* libPods-PoopAI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E941117E20CDD86948F58B32 /* libPods-PoopAI.a */; };
+		8D5347AD94CD4C54BC45B02F /* Poppins_600SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F078BA9E0E354DF4931983BD /* Poppins_600SemiBold.ttf */; };
 		94303DF1706DBDCF5459D724 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF7D966C9B02C9CF9469401 /* ExpoModulesProvider.swift */; };
 		94E0518510418A81ECD4E962 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 4B1F0BC69039822EDB854DF7 /* PrivacyInfo.xcprivacy */; };
 		95DBAA549CC041488F3D3C9E /* Inter_700Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83F96075D9864A298568BF4E /* Inter_700Bold.ttf */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
 		DA267C9F64D54513A8E55334 /* Inter_500Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B4E891CB494841FC9A8B002F /* Inter_500Medium.ttf */; };
 		DC510EB68134479EBCFC2B98 /* Inter_600SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85618E3E6E8E40A99F1EC6E4 /* Inter_600SemiBold.ttf */; };
+		E5676E4BA1194378B98CB64E /* Poppins_700Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1258B41899C74A81AC5EDC36 /* Poppins_700Bold.ttf */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
+		FAC5BA04375646699647EECD /* Poppins_500Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD845B829AE64923817ECE09 /* Poppins_500Medium.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		083EAB3C4FB6DB0FD12E463B /* Pods-PoopAI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PoopAI.debug.xcconfig"; path = "Target Support Files/Pods-PoopAI/Pods-PoopAI.debug.xcconfig"; sourceTree = "<group>"; };
+		0B5B23A9C43C4AD4B4B0109D /* Poppins_400Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Poppins_400Regular.ttf; path = "../node_modules/@expo-google-fonts/poppins/400Regular/Poppins_400Regular.ttf"; sourceTree = "<group>"; };
+		1258B41899C74A81AC5EDC36 /* Poppins_700Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Poppins_700Bold.ttf; path = "../node_modules/@expo-google-fonts/poppins/700Bold/Poppins_700Bold.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* PoopAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PoopAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = PoopAI/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PoopAI/Info.plist; sourceTree = "<group>"; };
@@ -35,8 +41,10 @@
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
 		E941117E20CDD86948F58B32 /* libPods-PoopAI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PoopAI.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F078BA9E0E354DF4931983BD /* Poppins_600SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Poppins_600SemiBold.ttf; path = "../node_modules/@expo-google-fonts/poppins/600SemiBold/Poppins_600SemiBold.ttf"; sourceTree = "<group>"; };
 		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = PoopAI/AppDelegate.swift; sourceTree = "<group>"; };
 		F11748442D0722820044C1D9 /* PoopAI-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "PoopAI-Bridging-Header.h"; path = "PoopAI/PoopAI-Bridging-Header.h"; sourceTree = "<group>"; };
+		FD845B829AE64923817ECE09 /* Poppins_500Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Poppins_500Medium.ttf; path = "../node_modules/@expo-google-fonts/poppins/500Medium/Poppins_500Medium.ttf"; sourceTree = "<group>"; };
 		FE629F6AAFE79A797150DAB6 /* Pods-PoopAI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PoopAI.release.xcconfig"; path = "Target Support Files/Pods-PoopAI/Pods-PoopAI.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,6 +106,10 @@
 				B4E891CB494841FC9A8B002F /* Inter_500Medium.ttf */,
 				85618E3E6E8E40A99F1EC6E4 /* Inter_600SemiBold.ttf */,
 				83F96075D9864A298568BF4E /* Inter_700Bold.ttf */,
+				0B5B23A9C43C4AD4B4B0109D /* Poppins_400Regular.ttf */,
+				FD845B829AE64923817ECE09 /* Poppins_500Medium.ttf */,
+				F078BA9E0E354DF4931983BD /* Poppins_600SemiBold.ttf */,
+				1258B41899C74A81AC5EDC36 /* Poppins_700Bold.ttf */,
 			);
 			name = Resources;
 			path = "";
@@ -222,6 +234,10 @@
 				DC510EB68134479EBCFC2B98 /* Inter_600SemiBold.ttf in Resources */,
 				95DBAA549CC041488F3D3C9E /* Inter_700Bold.ttf in Resources */,
 				94E0518510418A81ECD4E962 /* PrivacyInfo.xcprivacy in Resources */,
+				78871BB189564334AF236CE2 /* Poppins_400Regular.ttf in Resources */,
+				FAC5BA04375646699647EECD /* Poppins_500Medium.ttf in Resources */,
+				8D5347AD94CD4C54BC45B02F /* Poppins_600SemiBold.ttf in Resources */,
+				E5676E4BA1194378B98CB64E /* Poppins_700Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,7 +408,7 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.poopai.development;
+				PRODUCT_BUNDLE_IDENTIFIER = com.poopai;
 				PRODUCT_NAME = PoopAI;
 				SWIFT_OBJC_BRIDGING_HEADER = "PoopAI/PoopAI-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -423,7 +439,7 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = com.poopai.development;
+				PRODUCT_BUNDLE_IDENTIFIER = com.poopai;
 				PRODUCT_NAME = PoopAI;
 				SWIFT_OBJC_BRIDGING_HEADER = "PoopAI/PoopAI-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -487,7 +503,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SDKROOT)/usr/lib/swift\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/.pnpm/react-native@0.81.5_@babel+core@7.28.6_@types+react@19.1.17_react@19.1.0/node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_ENABLE_EXPLICIT_MODULES = NO;
@@ -542,7 +558,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(SDKROOT)/usr/lib/swift\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/.pnpm/react-native@0.81.5_@babel+core@7.28.6_@types+react@19.1.17_react@19.1.0/node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ENABLE_EXPLICIT_MODULES = NO;
 				USE_HERMES = true;

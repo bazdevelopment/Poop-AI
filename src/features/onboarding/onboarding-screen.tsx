@@ -21,27 +21,30 @@ export function OnboardingScreen() {
         <Cover />
       </View>
       <View className="justify-end">
-        <Text className="my-3 text-center text-5xl font-bold">Poop AI</Text>
-        <Text className="mb-2 text-center text-lg text-gray-600">
+        <Text className="my-3 text-center font-bold-poppins text-5xl">
+          Poop AI
+        </Text>
+        <Text className="mb-2 text-center font-primary-poppins text-lg text-gray-600">
           The right way to build your mobile app
         </Text>
 
-        <Text className="my-1 pt-6 text-left text-lg">
+        <Text className="my-1 pt-6 text-left font-primary-poppins text-lg">
           🚀 Production-ready{' '}
         </Text>
-        <Text className="my-1 text-left text-lg">
+        <Text className="my-1 text-left font-primary-poppins text-lg">
           🥷 Developer experience + Productivity
         </Text>
-        <Text className="my-1 text-left text-lg">
+        <Text className="my-1 text-left font-primary-poppins text-lg">
           🧩 Minimal code and dependencies
         </Text>
-        <Text className="my-1 text-left text-lg">
+        <Text className="my-1 text-left font-primary-poppins text-lg">
           💪 well maintained third-party libraries
         </Text>
       </View>
       <SafeAreaView className="mt-6">
         <Button
           label="Let's Get Started "
+          textClassName="font-semibold-poppins"
           onPress={() => {
             setIsFirstTime(false);
             router.replace('/login');

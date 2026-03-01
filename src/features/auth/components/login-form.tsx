@@ -55,7 +55,7 @@ export function LoginForm({ onSubmit = () => {} }: LoginFormProps) {
         <View className="items-center justify-center">
           <Text
             testID="form-title"
-            className="pb-6 text-center text-4xl font-bold"
+            className="pb-6 text-center font-bold-poppins text-4xl"
           >
             Sign In
           </Text>
@@ -68,7 +68,7 @@ export function LoginForm({ onSubmit = () => {} }: LoginFormProps) {
 
         <form.Field
           name="name"
-          children={field => (
+          children={(field) => (
             <Input
               testID="name"
               label="Name"
@@ -82,7 +82,7 @@ export function LoginForm({ onSubmit = () => {} }: LoginFormProps) {
 
         <form.Field
           name="email"
-          children={field => (
+          children={(field) => (
             <Input
               testID="email-input"
               label="Email"
@@ -96,7 +96,7 @@ export function LoginForm({ onSubmit = () => {} }: LoginFormProps) {
 
         <form.Field
           name="password"
-          children={field => (
+          children={(field) => (
             <Input
               testID="password-input"
               label="Password"
@@ -111,7 +111,7 @@ export function LoginForm({ onSubmit = () => {} }: LoginFormProps) {
         />
 
         <form.Subscribe
-          selector={state => [state.isSubmitting]}
+          selector={(state) => [state.isSubmitting]}
           children={([isSubmitting]) => (
             <Button
               testID="login-button"
