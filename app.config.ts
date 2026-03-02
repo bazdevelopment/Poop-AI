@@ -44,16 +44,59 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   assetBundlePatterns: ['**/*'],
   ios: {
+    appStoreUrl: '',
     supportsTablet: true,
     bundleIdentifier: Env.EXPO_PUBLIC_BUNDLE_ID,
+    googleServicesFile: Env.EXPO_PUBLIC_GOOGLE_SERVICES_PLIST_PATH,
+
     infoPlist: {
       ITSAppUsesNonExemptEncryption: false,
+      CFBundleLocalizations: [
+        // 'de', // German
+        // 'tr', // Turkish
+        // 'fr', // French
+        // 'it', // Italian
+        // 'pt-PT', // Portuguese (Portugal)
+        // 'ar', // Arabic
+        // 'es-ES', // Spanish (Spain)
+        // 'es-MX', // Spanish (Mexico)
+        // 'hi', // Hindi
+        // 'ro', // Romanian
+        // 'uk', // Ukrainian
+        // 'ru', // Russian
+        // 'th', // Thai
+        // 'id', // Indonesian
+        // 'he', // Hebrew
+        // 'ja', // Japanese
+        // 'ko', // Korean
+        // 'zh', // Chinese (Simplified)
+        // 'no', // Norwegian
+        // 'pl', // Polish
+        // 'sv', // Swedish
+        'en', // English
+        // 'fr-CA', // French (Canada)
+        // 'pt-BR', // Portuguese (Brazil)
+        // 'vi', // Vietnamese
+        // 'nl', // Dutch
+        // 'cs', // Czech
+        // 'el', // Greek
+        // 'hu', // Hungarian
+        // 'ms', // Malay
+        // 'fi', // Finnish
+        // 'da', // Danish
+        // 'sk', // Slovak
+        // 'hr', // Croatian
+        // 'ca', // Catalan
+      ],
+      CFBundleDevelopmentRegion: 'en', // Default language, adjust if needed
     },
   },
   experiments: {
     typedRoutes: true,
   },
   android: {
+    playStoreUrl: '',
+    googleServicesFile: Env.EXPO_PUBLIC_GOOGLE_SERVICES_JSON_PATH,
     adaptiveIcon: {
       foregroundImage: './assets/adaptive-icon.png',
       backgroundColor: '#895129',
@@ -111,10 +154,68 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         },
       },
     ],
+    [
+      'expo-quick-actions',
+      {
+        androidIcons: {
+          heart_icon: {
+            foregroundImage: './assets/heart-icon-android.png',
+            backgroundColor: '#FFFFFF',
+          },
+        },
+        iosIcons: {
+          heart_icon: './assets/heart-icon-ios.png',
+        },
+      },
+    ],
+    [
+      'expo-notifications',
+      {
+        icon: './assets/icon_notification_96x96_2.png',
+        color: '#1d1e3c',
+        defaultChannel: 'default',
+      },
+    ],
+    [
+      'expo-image-picker',
+      {
+        photosPermission:
+          'Allow $(PRODUCT_NAME) to access your photo library to upload media for AI analysis, providing insights and feedback for informational purposes.',
+        cameraPermission:
+          'Allow $(PRODUCT_NAME) to access your camera to capture images for AI-powered analysis, providing insights and feedback for informational purposes.',
+        // 'Disables the microphone permission',
+        microphonePermission: false,
+      },
+    ],
+    [
+      'expo-document-picker',
+      {
+        iCloudContainerEnvironment: 'Production',
+      },
+    ],
+    [
+      'expo-build-properties',
+      {
+        ios: {
+          useFrameworks: 'static',
+          buildReactNativeFromSource: true,
+        },
+      },
+    ],
     'expo-localization',
     'expo-router',
+    '@react-native-firebase/app',
+    '@react-native-firebase/auth',
+    '@react-native-firebase/crashlytics',
     ['app-icon-badge', appIconBadgeConfig],
     ['react-native-edge-to-edge'],
+    [
+      'expo-camera',
+      {
+        cameraPermission:
+          'Allow $(PRODUCT_NAME) to access your camera to capture images for AI analysis',
+      },
+    ],
   ],
   extra: {
     eas: {

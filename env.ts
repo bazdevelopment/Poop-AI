@@ -12,7 +12,8 @@ const envSchema = z.object({
   EXPO_PUBLIC_ASSOCIATED_DOMAIN: z.string().url().optional(),
   EXPO_PUBLIC_VAR_NUMBER: z.number(),
   EXPO_PUBLIC_VAR_BOOL: z.boolean(),
-
+  EXPO_PUBLIC_GOOGLE_SERVICES_PLIST_PATH: z.string().optional(),
+  EXPO_PUBLIC_GOOGLE_SERVICES_JSON_PATH: z.string().optional(),
   // only available for app.config.ts usage
   APP_BUILD_ONLY_VAR: z.string().optional(),
 });
@@ -56,6 +57,10 @@ const _env: z.infer<typeof envSchema> = {
   EXPO_PUBLIC_VAR_NUMBER: Number(process.env.EXPO_PUBLIC_VAR_NUMBER ?? 0),
   EXPO_PUBLIC_VAR_BOOL: process.env.EXPO_PUBLIC_VAR_BOOL === 'true',
   APP_BUILD_ONLY_VAR: process.env.APP_BUILD_ONLY_VAR,
+  EXPO_PUBLIC_GOOGLE_SERVICES_PLIST_PATH:
+    process.env.EXPO_PUBLIC_GOOGLE_SERVICES_PLIST_PATH,
+  EXPO_PUBLIC_GOOGLE_SERVICES_JSON_PATH:
+    process.env.EXPO_PUBLIC_GOOGLE_SERVICES_JSON_PATH,
 };
 
 function getValidatedEnv(env: z.infer<typeof envSchema>) {
@@ -66,7 +71,7 @@ function getValidatedEnv(env: z.infer<typeof envSchema>) {
       `❌ Invalid environment variables:${JSON.stringify(
         parsed.error.flatten().fieldErrors,
         null,
-        2
+        2,
       )}\n❌ Missing variables in .env file for APP_ENV=${EXPO_PUBLIC_APP_ENV}` +
       `\n💡 Tip: If you recently updated the .env file, try restarting with -c flag to clear the cache.`;
 
