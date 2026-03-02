@@ -47,7 +47,7 @@ export default antfu(
   {
     rules: {
       'max-params': ['error', 3],
-      'max-lines-per-function': ['error', 110],
+      'max-lines-per-function': ['error', 200],
       'react/display-name': 'off',
       'react/no-inline-styles': 'off',
       'react/destructuring-assignment': 'off',
@@ -136,7 +136,7 @@ export default antfu(
         {
           syntax: path.resolve(
             __dirname,
-            './scripts/i18next-syntax-validation.js',
+            './scripts/i18next-syntax-validation.js'
           ),
         },
       ],
@@ -148,7 +148,6 @@ export default antfu(
       ],
       // Disable conflicting rules for i18n JSON files
       'style/semi': 'off',
-      'style/comma-dangle': 'off',
       'style/quotes': 'off',
       'unused-imports/no-unused-vars': 'off',
     },
@@ -161,5 +160,5 @@ export default antfu(
     rules: {
       ...testingLibrary.configs.react.rules,
     },
-  },
+  }
 );

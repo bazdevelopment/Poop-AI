@@ -1,0 +1,178 @@
+import type {
+  CustomerInfo,
+  PurchasesOffering,
+  PurchasesPackage,
+} from 'react-native-purchases';
+import { router } from 'expo-router';
+import { Platform } from 'react-native';
+import Purchases, { LOG_LEVEL } from 'react-native-purchases';
+
+import { createMutation, createQuery } from 'react-query-kit';
+import Toast from '@/components/toast';
+
+import { translate } from '@/lib/i18n';
+import { wait } from '@/utilities/wait';
+import Env from '../../../env';
+import { queryClient } from '../common';
+import { startFreeTrial } from './subscription.requests';
+
+// Query to fetch offerings
+export const useGetOfferings = createQuery<PurchasesOffering | null, Error>({
+  queryKey: ['subscription-offerings'],
+  fetcher: async () => {
+    const offerings = await Purchases.getOfferings();
+    return offerings.current;
+  },
+});
+
+// Query to fetch customer info
+export const useGetCustomerInfo = createQuery<CustomerInfo | null, Error>({
+  queryKey: ['subscription-customerInfo'],
+  fetcher: async () => {
+    const info = await Purchases.getCustomerInfo();
+    return info;
+  },
+});
+
+// purchase subscription mutation
+export const usePurchaseSubscription = createMutation<
+  CustomerInfo | undefined,
+  { packageIdentifier: string },
+  Error
+>({
+  mutationFn: async ({ packageIdentifier }: { packageIdentifier: string }) => {
+    const offerings = await Purchases.getOfferings();
+    const weeklyAndAnnualOfferings = [
+      ...(offerings.current?.annual ? [offerings.current.annual] : []),
+      ...(offerings.current?.monthly ? [offerings.current.monthly] : []),
+      ...(offerings.current?.weekly ? [offerings.current.weekly] : []),
+    ];
+
+    const selectedPackage = weeklyAndAnnualOfferings.find(
+      (pkg: PurchasesPackage) => pkg.product.identifier === packageIdentifier,
+    );
+
+    if (!selectedPackage) {
+      return Toast.error(translate('alerts.chooseSubscriptionPlan'), {
+        closeButton: true,
+        duration: 10000000,
+      });
+    }
+
+    const { customerInfo } = await Purchases.purchasePackage(selectedPackage);
+    return customerInfo;
+  },
+  onSuccess: () => {
+    Toast.success(translate('alerts.subscriptionActivated'));
+
+    queryClient.invalidateQueries({ queryKey: ['user-info'] });
+    queryClient.invalidateQueries({ queryKey: ['subscription-customerInfo'] });
+  },
+  onError: (error) => {
+    if (error.userCancelled) {
+      // wait is needed because there is a conflict between android subscription modal and toast
+      wait(500).then(() =>
+        Toast.warning(translate('alerts.subscriptionCancelledByUser'), {
+          closeButton: true,
+          duration: 8000,
+        }),
+      );
+    } else {
+      wait(500).then(() =>
+        Toast.error(translate('alerts.subscriptionActivationFailed'), {
+          closeButton: true,
+          duration: 8000,
+        }),
+      );
+      console.error(error);
+    }
+  },
+});
+
+// Query to initialize RevenueCat
+export function useInitializeRevenueCat(userId: string) {
+  return createQuery<
+    boolean, // Return type (whether initialization succeeded)
+    void, // No input variables
+    Error
+  >({
+    queryKey: ['initializeRevenueCat'],
+    // enabled: !!userId,
+    fetcher: async () => {
+      if (Platform.OS === 'android') {
+        await Purchases.configure({
+          appUserID: userId,
+          apiKey: Env.EXPO_PUBLIC_REVENUE_CAT_API_KEYS_GOOGLE as string,
+        });
+      } else {
+        await Purchases.configure({
+          appUserID: userId,
+          apiKey: Env.EXPO_PUBLIC_REVENUE_CAT_API_KEYS_APPLE as string,
+        });
+      }
+
+      Purchases.setLogLevel(LOG_LEVEL.DEBUG);
+      console.log('RevenueCat initialized successfully');
+      return true; // Indicate successful initialization
+    },
+  })();
+}
+
+// Mutation to restore purchases
+export function useRestorePurchases(
+  onSuccessRestoration: (fields: object) => void,
+) {
+  return createMutation<CustomerInfo, void, Error>({
+    mutationFn: async () => {
+      const customerInfo = await Purchases.restorePurchases();
+      return customerInfo;
+    },
+    onSuccess: async (customerInfo) => {
+      console.log('Purchases restored info:', customerInfo);
+      queryClient.invalidateQueries({
+        queryKey: ['subscription-customerInfo'],
+      });
+      if (!customerInfo.activeSubscriptions.length) {
+        Toast.warning(translate('alerts.noSubscriptionToRestore'), {
+          duration: 10000000,
+          closeButton: true,
+        });
+      }
+      if (customerInfo?.activeSubscriptions?.length) {
+        Toast.success(translate('alerts.restorationSuccessful'));
+
+        const fieldsToUpdate: Partial<IUserInfo> = {
+          // isOnboarded: true,
+          isFreeTrialOngoing: !customerInfo?.activeSubscriptions?.length,
+          ...(customerInfo && {
+            activeSubscriptionsRevenue: customerInfo.activeSubscriptions,
+            allExpirationDatesRevenue: customerInfo.allExpirationDates,
+            allPurchaseDatesRevenue: customerInfo.allPurchaseDates,
+            allPurchasedProductIdentifiersRevenue:
+              customerInfo.allPurchasedProductIdentifiers,
+            firstSeenRevenue: customerInfo.firstSeen,
+            //* *!add a trial in the past for  monthy/yearly subscriptions */
+          }),
+        };
+
+        onSuccessRestoration(fieldsToUpdate);
+        // requestAppRatingWithDelay(3000);
+        wait(2000).then(() => router.navigate('/(app)'));
+      }
+    },
+    onError: (error) => {
+      console.error('Failed to restore purchases:', error);
+      wait(500).then(() => Toast.error(translate('alerts.restorationError')));
+    },
+  })();
+}
+
+// purchase subscription mutation
+export const useStartFreeTrial = createMutation<any, any, Error>({
+  mutationFn: startFreeTrial,
+  onSuccess: () => {
+    queryClient.invalidateQueries({ queryKey: ['user-info'] });
+    Toast.success(translate('alerts.subscriptionActivated'));
+    wait(2000).then(() => router.navigate('/(app)'));
+  },
+});
