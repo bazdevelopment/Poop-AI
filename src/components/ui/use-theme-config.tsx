@@ -30,9 +30,9 @@ const LightTheme: Theme = {
 
 export function useThemeConfig() {
   const { theme } = useUniwind();
+  return DarkTheme;
+  // if (theme === 'dark')
+  //   return DarkTheme;
 
-  if (theme === 'dark')
-    return DarkTheme;
-
-  return LightTheme;
+  // return LightTheme;
 }

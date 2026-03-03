@@ -9,7 +9,7 @@ import Toast from '@/components/toast';
 
 import { useCrashlytics } from '@/hooks/use-crashlytics';
 import { translate } from '@/lib/i18n';
-import { queryClient } from '../../../../exfit-ai/src/api/common';
+import { queryClient } from '../common';
 import {
   getDeviceInfoByUniqueIdentifier,
   getUserNotifications,

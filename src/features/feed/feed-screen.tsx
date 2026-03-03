@@ -2,13 +2,7 @@ import type { Post } from './api';
 import { FlashList } from '@shopify/flash-list';
 
 import * as React from 'react';
-import {
-  EmptyList,
-  FocusAwareStatusBar,
-  SafeAreaView,
-  Text,
-  View,
-} from '@/components/ui';
+import { EmptyList, FocusAwareStatusBar, Text, View } from '@/components/ui';
 import { usePosts } from './api';
 import { PostCard } from './components/post-card';
 
@@ -19,17 +13,15 @@ export function FeedScreen() {
     [],
   );
 
-  if (true) {
+  if (isError) {
     return (
-      <SafeAreaView className="flex-1">
-        <View>
-          <Text> Error Loading data </Text>
-        </View>
-      </SafeAreaView>
+      <View>
+        <Text> Error Loading data </Text>
+      </View>
     );
   }
   return (
-    <SafeAreaView className="flex-1 border-2 border-red-200">
+    <View className="flex-1">
       <FocusAwareStatusBar />
       <FlashList
         data={data}
@@ -37,6 +29,6 @@ export function FeedScreen() {
         keyExtractor={(_, index) => `item-${index}`}
         ListEmptyComponent={<EmptyList isLoading={isPending} />}
       />
-    </SafeAreaView>
+    </View>
   );
 }

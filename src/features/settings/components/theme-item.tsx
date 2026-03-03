@@ -30,7 +30,7 @@ export function ThemeItem() {
   );
 
   const theme = React.useMemo(
-    () => themes.find(t => t.value === selectedTheme),
+    () => themes.find((t) => t.value === selectedTheme),
     [selectedTheme, themes],
   );
 

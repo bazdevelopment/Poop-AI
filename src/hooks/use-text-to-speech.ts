@@ -1,24 +1,22 @@
-/* eslint-disable max-lines-per-function */
 import * as Speech from 'expo-speech';
 import { useEffect, useState } from 'react';
 
 import { IETF_BCP_47_FORMAT_LANGUAGE } from '@/constants/language';
+import { useSelectedLanguage } from '@/lib/i18n';
 
-import { useSelectedLanguage } from '../i18n';
-
-interface UseTextToSpeechProps {
+type UseTextToSpeechProps = {
   preferredGender?: 'female' | 'male';
-}
+};
 
-interface SpeechOptions {
+type SpeechOptions = {
   language?: string;
   pitch?: number;
   rate?: number;
   volume?: number;
   voice?: string;
-}
+};
 
-interface UseTextToSpeechReturn {
+type UseTextToSpeechReturn = {
   speak: (text: string, options?: SpeechOptions) => Promise<void>;
   stop: () => Promise<void>;
   isSpeaking: boolean;
@@ -28,11 +26,11 @@ interface UseTextToSpeechReturn {
   pauseSpeaking: () => Promise<void>;
   resumeSpeaking: () => Promise<void>;
   isLoading: boolean;
-}
+};
 
-export const useTextToSpeech = ({
+export function useTextToSpeech({
   preferredGender = 'female',
-}: UseTextToSpeechProps): UseTextToSpeechReturn => {
+}: UseTextToSpeechProps): UseTextToSpeechReturn {
   const { language } = useSelectedLanguage();
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -61,7 +59,7 @@ export const useTextToSpeech = ({
         if (!matchedVoice) {
           // Look for voices that contain the language code
           const voiceFallback = voices.find((v) =>
-            v.language.includes(voiceLanguage)
+            v.language.includes(voiceLanguage),
           );
 
           matchedVoice = voiceFallback;
@@ -93,7 +91,7 @@ export const useTextToSpeech = ({
 
   const speak = async (
     text: string,
-    options?: SpeechOptions
+    options?: SpeechOptions,
   ): Promise<void> => {
     try {
       // Stop any ongoing speech
@@ -163,4 +161,4 @@ export const useTextToSpeech = ({
     resumeSpeaking,
     isLoading,
   };
-};
+}

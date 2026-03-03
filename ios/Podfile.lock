@@ -1516,6 +1516,8 @@ PODS:
     - Yoga
   - ExpoQuickActions (6.0.1):
     - ExpoModulesCore
+  - ExpoSpeech (14.0.8):
+    - ExpoModulesCore
   - ExpoSplashScreen (31.0.13):
     - ExpoModulesCore
   - ExpoSystemUI (6.0.9):
@@ -1811,6 +1813,36 @@ PODS:
   - libwebp/sharpyuv (1.5.0)
   - libwebp/webp (1.5.0):
     - libwebp/sharpyuv
+  - lottie-ios (4.6.0)
+  - lottie-react-native (7.3.6):
+    - boost
+    - DoubleConversion
+    - fast_float
+    - fmt
+    - glog
+    - hermes-engine
+    - lottie-ios (= 4.6.0)
+    - RCT-Folly
+    - RCT-Folly/Fabric
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-renderercss
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - SocketRocket
+    - Yoga
   - MMKVCore (2.2.4)
   - nanopb (3.30910.0):
     - nanopb/decode (= 3.30910.0)
@@ -3622,6 +3654,34 @@ PODS:
     - React-RCTFBReactNativeSpec
     - ReactCommon/turbomodule/core
     - SocketRocket
+  - react-native-blur (4.4.1):
+    - boost
+    - DoubleConversion
+    - fast_float
+    - fmt
+    - glog
+    - hermes-engine
+    - RCT-Folly
+    - RCT-Folly/Fabric
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-renderercss
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - SocketRocket
+    - Yoga
   - react-native-keyboard-controller (1.18.5):
     - boost
     - DoubleConversion
@@ -4277,6 +4337,8 @@ PODS:
     - SocketRocket
   - RecaptchaInterop (101.0.0)
   - RevenueCat (5.59.2)
+  - RNCMaskedView (0.1.11):
+    - React
   - RNFBAnalytics (23.8.6):
     - boost
     - DoubleConversion
@@ -4897,6 +4959,7 @@ DEPENDENCIES:
   - "ExpoLocalization (from `../node_modules/.pnpm/expo-localization@17.0.8_expo@54.0.32_react@19.1.0/node_modules/expo-localization/ios`)"
   - "ExpoModulesCore (from `../node_modules/.pnpm/expo-modules-core@3.0.29_react-native@0.81.5_@babel+core@7.28.6_@types+react@19.1.17_react@19.1.0__react@19.1.0/node_modules/expo-modules-core`)"
   - "ExpoQuickActions (from `../node_modules/.pnpm/expo-quick-actions@6.0.1_expo@54.0.32/node_modules/expo-quick-actions/ios`)"
+  - "ExpoSpeech (from `../node_modules/.pnpm/expo-speech@14.0.8_expo@54.0.32/node_modules/expo-speech/ios`)"
   - "ExpoSplashScreen (from `../node_modules/.pnpm/expo-splash-screen@31.0.13_expo@54.0.32/node_modules/expo-splash-screen/ios`)"
   - "ExpoSystemUI (from `../node_modules/.pnpm/expo-system-ui@6.0.9_expo@54.0.32_react-native-web@0.21.2_react-dom@19.1.0_react@19.1.0_f50a4c3429b0e4ab285136ba1e1e78df/node_modules/expo-system-ui/ios`)"
   - "EXUpdatesInterface (from `../node_modules/.pnpm/expo-updates-interface@2.0.0_expo@54.0.32/node_modules/expo-updates-interface/ios`)"
@@ -4905,6 +4968,7 @@ DEPENDENCIES:
   - "fmt (from `../node_modules/.pnpm/react-native@0.81.5_@babel+core@7.28.6_@types+react@19.1.17_react@19.1.0/node_modules/react-native/third-party-podspecs/fmt.podspec`)"
   - "glog (from `../node_modules/.pnpm/react-native@0.81.5_@babel+core@7.28.6_@types+react@19.1.17_react@19.1.0/node_modules/react-native/third-party-podspecs/glog.podspec`)"
   - "hermes-engine (from `../node_modules/.pnpm/react-native@0.81.5_@babel+core@7.28.6_@types+react@19.1.17_react@19.1.0/node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec`)"
+  - "lottie-react-native (from `../node_modules/.pnpm/lottie-react-native@7.3.6_react-native@0.81.5_@babel+core@7.28.6_@types+react@19.1.17_react@19.1.0__react@19.1.0/node_modules/lottie-react-native`)"
   - "NitroMmkv (from `../node_modules/.pnpm/react-native-mmkv@4.1.1_react-native-nitro-modules@0.33.2_react-native@0.81.5_@babel+co_e881177de5f474b1eb21cd48dced2e02/node_modules/react-native-mmkv`)"
   - "NitroModules (from `../node_modules/.pnpm/react-native-nitro-modules@0.33.2_react-native@0.81.5_@babel+core@7.28.6_@types+react@19.1.17_react@19.1.0__react@19.1.0/node_modules/react-native-nitro-modules`)"
   - "RCT-Folly (from `../node_modules/.pnpm/react-native@0.81.5_@babel+core@7.28.6_@types+react@19.1.17_react@19.1.0/node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)"
@@ -4941,6 +5005,7 @@ DEPENDENCIES:
   - "React-logger (from `../node_modules/.pnpm/react-native@0.81.5_@babel+core@7.28.6_@types+react@19.1.17_react@19.1.0/node_modules/react-native/ReactCommon/logger`)"
   - "React-Mapbuffer (from `../node_modules/.pnpm/react-native@0.81.5_@babel+core@7.28.6_@types+react@19.1.17_react@19.1.0/node_modules/react-native/ReactCommon`)"
   - "React-microtasksnativemodule (from `../node_modules/.pnpm/react-native@0.81.5_@babel+core@7.28.6_@types+react@19.1.17_react@19.1.0/node_modules/react-native/ReactCommon/react/nativemodule/microtasks`)"
+  - "react-native-blur (from `../node_modules/.pnpm/@react-native-community+blur@4.4.1_react-native@0.81.5_@babel+core@7.28.6_@types+react@_12168667ac382a41337beafdd5be46d2/node_modules/@react-native-community/blur`)"
   - "react-native-keyboard-controller (from `../node_modules/.pnpm/react-native-keyboard-controller@1.18.5_react-native-reanimated@4.1.6_@babel+core@7.28._b29d51b41a0a770870f87e1f20c586cc/node_modules/react-native-keyboard-controller`)"
   - "react-native-netinfo (from `../node_modules/.pnpm/@react-native-community+netinfo@11.4.1_react-native@0.81.5_@babel+core@7.28.6_@types+react@19.1.17_react@19.1.0_/node_modules/@react-native-community/netinfo`)"
   - "react-native-restart (from `../node_modules/.pnpm/react-native-restart@0.0.27_react-native@0.81.5_@babel+core@7.28.6_@types+react@19.1.17_react@19.1.0__react@19.1.0/node_modules/react-native-restart`)"
@@ -4975,6 +5040,7 @@ DEPENDENCIES:
   - ReactAppDependencyProvider (from `build/generated/ios`)
   - ReactCodegen (from `build/generated/ios`)
   - "ReactCommon/turbomodule/core (from `../node_modules/.pnpm/react-native@0.81.5_@babel+core@7.28.6_@types+react@19.1.17_react@19.1.0/node_modules/react-native/ReactCommon`)"
+  - "RNCMaskedView (from `../node_modules/.pnpm/@react-native-community+masked-view@0.1.11_react-native@0.81.5_@babel+core@7.28.6_@type_1746d6d683ed98017905e6a79d0b5028/node_modules/@react-native-community/masked-view`)"
   - "RNFBAnalytics (from `../node_modules/.pnpm/@react-native-firebase+analytics@23.8.6_@react-native-firebase+app@23.8.6_expo@54.0.32__92e7f46c06d35351459fe64048ee54c2/node_modules/@react-native-firebase/analytics`)"
   - "RNFBApp (from `../node_modules/.pnpm/@react-native-firebase+app@23.8.6_expo@54.0.32_react-native@0.81.5_@babel+core@7.28.6_@_f36d555a5c4fb02eb7fe21debcefb8ec/node_modules/@react-native-firebase/app`)"
   - "RNFBAuth (from `../node_modules/.pnpm/@react-native-firebase+auth@23.8.6_@react-native-firebase+app@23.8.6_expo@54.0.32_react_e3c507162b8746ad0cc92a93315edf35/node_modules/@react-native-firebase/auth`)"
@@ -5026,6 +5092,7 @@ SPEC REPOS:
     - libavif
     - libdav1d
     - libwebp
+    - lottie-ios
     - MMKVCore
     - nanopb
     - PromisesObjC
@@ -5101,6 +5168,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/.pnpm/expo-modules-core@3.0.29_react-native@0.81.5_@babel+core@7.28.6_@types+react@19.1.17_react@19.1.0__react@19.1.0/node_modules/expo-modules-core"
   ExpoQuickActions:
     :path: "../node_modules/.pnpm/expo-quick-actions@6.0.1_expo@54.0.32/node_modules/expo-quick-actions/ios"
+  ExpoSpeech:
+    :path: "../node_modules/.pnpm/expo-speech@14.0.8_expo@54.0.32/node_modules/expo-speech/ios"
   ExpoSplashScreen:
     :path: "../node_modules/.pnpm/expo-splash-screen@31.0.13_expo@54.0.32/node_modules/expo-splash-screen/ios"
   ExpoSystemUI:
@@ -5118,6 +5187,8 @@ EXTERNAL SOURCES:
   hermes-engine:
     :podspec: "../node_modules/.pnpm/react-native@0.81.5_@babel+core@7.28.6_@types+react@19.1.17_react@19.1.0/node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec"
     :tag: hermes-2025-07-07-RNv0.81.0-e0fc67142ec0763c6b6153ca2bf96df815539782
+  lottie-react-native:
+    :path: "../node_modules/.pnpm/lottie-react-native@7.3.6_react-native@0.81.5_@babel+core@7.28.6_@types+react@19.1.17_react@19.1.0__react@19.1.0/node_modules/lottie-react-native"
   NitroMmkv:
     :path: "../node_modules/.pnpm/react-native-mmkv@4.1.1_react-native-nitro-modules@0.33.2_react-native@0.81.5_@babel+co_e881177de5f474b1eb21cd48dced2e02/node_modules/react-native-mmkv"
   NitroModules:
@@ -5188,6 +5259,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/.pnpm/react-native@0.81.5_@babel+core@7.28.6_@types+react@19.1.17_react@19.1.0/node_modules/react-native/ReactCommon"
   React-microtasksnativemodule:
     :path: "../node_modules/.pnpm/react-native@0.81.5_@babel+core@7.28.6_@types+react@19.1.17_react@19.1.0/node_modules/react-native/ReactCommon/react/nativemodule/microtasks"
+  react-native-blur:
+    :path: "../node_modules/.pnpm/@react-native-community+blur@4.4.1_react-native@0.81.5_@babel+core@7.28.6_@types+react@_12168667ac382a41337beafdd5be46d2/node_modules/@react-native-community/blur"
   react-native-keyboard-controller:
     :path: "../node_modules/.pnpm/react-native-keyboard-controller@1.18.5_react-native-reanimated@4.1.6_@babel+core@7.28._b29d51b41a0a770870f87e1f20c586cc/node_modules/react-native-keyboard-controller"
   react-native-netinfo:
@@ -5256,6 +5329,8 @@ EXTERNAL SOURCES:
     :path: build/generated/ios
   ReactCommon:
     :path: "../node_modules/.pnpm/react-native@0.81.5_@babel+core@7.28.6_@types+react@19.1.17_react@19.1.0/node_modules/react-native/ReactCommon"
+  RNCMaskedView:
+    :path: "../node_modules/.pnpm/@react-native-community+masked-view@0.1.11_react-native@0.81.5_@babel+core@7.28.6_@type_1746d6d683ed98017905e6a79d0b5028/node_modules/@react-native-community/masked-view"
   RNFBAnalytics:
     :path: "../node_modules/.pnpm/@react-native-firebase+analytics@23.8.6_@react-native-firebase+app@23.8.6_expo@54.0.32__92e7f46c06d35351459fe64048ee54c2/node_modules/@react-native-firebase/analytics"
   RNFBApp:
@@ -5320,6 +5395,7 @@ SPEC CHECKSUMS:
   ExpoLocalization: d9168d5300a5b03e5e78b986124d11fb6ec3ebbd
   ExpoModulesCore: 91a57f1d109cf53fe58d44fcf6b68a777561549a
   ExpoQuickActions: 61e27ec458e4e06b854ddc6967c2b57aa6a772d5
+  ExpoSpeech: d22b56570ccfab5a27112dc9691f1ac83537de26
   ExpoSplashScreen: bc3cffefca2716e5f22350ca109badd7e50ec14d
   ExpoSystemUI: 2ad325f361a2fcd96a464e8574e19935c461c9cc
   EXUpdatesInterface: 5adf50cb41e079c861da6d9b4b954c3db9a50734
@@ -5358,6 +5434,8 @@ SPEC CHECKSUMS:
   libavif: 5f8e715bea24debec477006f21ef9e95432e254d
   libdav1d: 23581a4d8ec811ff171ed5e2e05cd27bad64c39f
   libwebp: 02b23773aedb6ff1fd38cec7a77b81414c6842a8
+  lottie-ios: 8f959969761e9c45d70353667d00af0e5b9cadb3
+  lottie-react-native: e542fe4b6e8eddcf893d5a8cef9f8b5c6d2f7331
   MMKVCore: f2dd4c9befea04277a55e84e7812f930537993df
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
   NitroMmkv: c9bfba1086a675047fab1b5fd145e900e49b310f
@@ -5398,6 +5476,7 @@ SPEC CHECKSUMS:
   React-logger: a913317214a26565cd4c045347edf1bcacb80a3f
   React-Mapbuffer: 017336879e2e0fb7537bbc08c24f34e2384c9260
   React-microtasksnativemodule: 63ee6730cec233feab9cdcc0c100dc28a12e4165
+  react-native-blur: b83ffbc5380d8bd2f06804b4b0e848be3507e65c
   react-native-keyboard-controller: c4ca61f44d66c2f8987a7e67e9b78e80dc965c45
   react-native-netinfo: cec9c4e86083cb5b6aba0e0711f563e2fbbff187
   react-native-restart: 0bc732f4461709022a742bb29bcccf6bbc5b4863
@@ -5434,6 +5513,7 @@ SPEC CHECKSUMS:
   ReactCommon: 6d0fa86a4510730da7c72560e0ced14258292ab9
   RecaptchaInterop: 11e0b637842dfb48308d242afc3f448062325aba
   RevenueCat: f352b3661288080bd8bf30bbb96e331940e73c88
+  RNCMaskedView: 4c5ee1c8667d56077246cc6d1977f77393923560
   RNFBAnalytics: 1c5bdfb69b78bca7a6695265591f70e71c3600c6
   RNFBApp: 4392d4d005a6e375719d1a5fa6019f664aba62af
   RNFBAuth: 445570306659fca0d6953d193667ae158d470415

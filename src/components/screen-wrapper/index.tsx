@@ -13,10 +13,10 @@ function ScreenWrapper({ children }: { children: React.ReactNode }) {
       locations={[0.5, 1]}
       style={{ flex: 1 }}
     >
-      <SafeAreaView className={`flex-1 ${DEVICE_TYPE.ANDROID ? 'mt-4' : ''}`}>
-        <FocusAwareStatusBar hidden />
-        {children}
-      </SafeAreaView>
+      {/* <SafeAreaView className={`${DEVICE_TYPE.ANDROID ? 'mt-4' : ''}`}> */}
+      <FocusAwareStatusBar hidden />
+      {children}
+      {/* </SafeAreaView> */}
     </LinearGradient>
   );
 }

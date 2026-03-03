@@ -1,91 +1,304 @@
-import Env from 'env';
-import { useUniwind } from 'uniwind';
+/* eslint-disable max-lines-per-function */
+import { useScrollToTop } from '@react-navigation/native';
+import { router } from 'expo-router';
+import * as React from 'react';
+import { useRef } from 'react';
+import { Linking } from 'react-native';
 
+import { useUniwind } from 'uniwind';
 import {
+  useSendGlobalPushNotifications,
+  useSendIndividualPushNotification,
+} from '@/api/push-notifications/push-notifications.hooks';
+import { useAddFieldsToCollection } from '@/api/services/services.hooks';
+import { useDeleteAccount, useUpdateUser } from '@/api/user/user.hooks';
+import { logout } from '@/api/user/user.requests';
+import CustomAlert from '@/components/custom-alert';
+import Icon from '@/components/icon';
+import ScreenWrapper from '@/components/screen-wrapper';
+import { Item } from '@/components/settings/item';
+import { ItemsContainer } from '@/components/settings/items-container';
+import { LanguageItem } from '@/components/settings/language-item';
+import { ThemeItem } from '@/components/settings/theme-item';
+import Toast from '@/components/toast';
+import {
+  Button,
   colors,
-  FocusAwareStatusBar,
+  SafeAreaView,
   ScrollView,
   Text,
   View,
 } from '@/components/ui';
-import { Github, Rate, Share, Support, Website } from '@/components/ui/icons';
-import { useAuthStore as useAuth } from '@/features/auth/use-auth-store';
-import { translate } from '@/lib/i18n';
-import { LanguageItem } from './components/language-item';
-import { SettingsContainer } from './components/settings-container';
-import { SettingsItem } from './components/settings-item';
-import { ThemeItem } from './components/theme-item';
+import { LogoutIcon, Rate } from '@/components/ui/assets/icons';
+import { useFirstOnboarding } from '@/hooks/use-first-onboarding';
+import useRemoteConfig from '@/hooks/use-remote-config';
+import { useSecondOnboarding } from '@/hooks/use-second-onboarding';
+import useSubscriptionAlert from '@/hooks/use-subscription-banner';
+import { useIsFirstTime } from '@/lib/hooks';
+import { translate, useSelectedLanguage } from '@/lib/i18n';
+import Env from '../../../env';
 
-export function SettingsScreen() {
-  const signOut = useAuth.use.signOut();
+export default function Settings() {
   const { theme } = useUniwind();
-  const iconColor
-    = theme === 'dark' ? colors.neutral[400] : colors.neutral[500];
+  const isDark = theme === 'dark';
+  const { language } = useSelectedLanguage();
+
+  const { mutateAsync: onUpdateUser, isPending: isPendingUpdateUser } =
+    useUpdateUser();
+  const { isUpgradeRequired } = useSubscriptionAlert();
+
+  const { SHOW_FAQ_SCREEN, SHOW_RATE_SCREEN } = useRemoteConfig();
+
+  const scrollViewRef = useRef(null);
+  const iconColor = isDark ? colors.neutral[50] : colors.black;
+
+  const { mutate: onHandleGlobalPushNotifications } =
+    useSendGlobalPushNotifications();
+
+  const { mutate: onAddFieldsToCollection } = useAddFieldsToCollection();
+
+  const { mutate: onHandleIndividualNotification } =
+    useSendIndividualPushNotification();
+  useScrollToTop(scrollViewRef);
+
+  const { mutate: onDeleteAccount, isPending: isPendingDeleteAccount } =
+    useDeleteAccount();
+
+  const [, setIsFirstTime] = useIsFirstTime();
+  const [, setIsFirstOnboardingDone] = useFirstOnboarding();
+  const [, setIsSecondOnboardingDone] = useSecondOnboarding();
+
+  const handleOnDeleteAccount = () => {
+    onDeleteAccount({});
+    setIsFirstTime(true);
+    setIsFirstOnboardingDone(false);
+    setIsSecondOnboardingDone(false);
+  };
+
+  const handleDeleteAccount = () => {
+    Toast.showCustomToast(
+      <CustomAlert
+        visible
+        title={translate('settings.deleteAccount')}
+        subtitle={translate('settings.deleteAccountQuestion')}
+        buttons={[
+          {
+            label: translate('general.close'),
+            variant: 'default',
+            onPress: () => Toast.dismiss(),
+            className:
+              'flex-1 rounded-full bg-transparent dark:bg-transparent border border-white dark:border-white h-[48]',
+            buttonTextClassName: 'text-white dark:text-white text-sm',
+          },
+          {
+            label: translate('general.delete'),
+            variant: 'destructive',
+            className: 'h-[48] flex-1 rounded-full',
+            onPress: handleOnDeleteAccount,
+          },
+        ]}
+      />,
+      {
+        duration: 10000000,
+      },
+    );
+  };
+
+  const handleLogout = async () => {
+    Toast.showCustomToast(
+      <CustomAlert
+        visible
+        title={translate('general.attention')}
+        subtitle={translate('alerts.logoutQuestion')}
+        image={
+          <Icon
+            size={24}
+            containerStyle="rounded-full bg-red-500 size-[50] items-center justify-center"
+            onPress={router.back}
+            icon={<LogoutIcon color={colors.white} />}
+          />
+        }
+        buttons={[
+          {
+            label: translate('general.close'),
+            variant: '',
+            onPress: () => Toast.dismiss(),
+            className:
+              'flex-1 rounded-full h-[48] bg-slate-100 active:opacity-80',
+            buttonTextClassName: 'text-black font-medium-poppins',
+          },
+          {
+            label: translate('general.yes'),
+            variant: '',
+            buttonTextClassName: 'text-white dark:text-white',
+            className:
+              'rounded-full flex-1 h-[48] bg-red-600 active:opacity-80',
+            onPress: async () => {
+              try {
+                logout();
+              } catch (error) {
+                Toast.error(translate('alerts.logoutUnsuccessful'));
+              }
+            },
+          },
+        ]}
+      />,
+      {
+        // position: "bottom-center", // Place the alert in the middle of the screen
+        duration: 10000000,
+      },
+    );
+  };
+
   return (
-    <>
-      <FocusAwareStatusBar />
-
-      <ScrollView>
-        <View className="flex-1 px-4 pt-16">
-          <Text className="text-xl font-bold">
-            {translate('settings.title')}
+    // <ScreenWrapper>
+    <ScrollView ref={scrollViewRef}>
+      <SafeAreaView>
+        {/* {DEVICE_TYPE.IOS && (
+        <Toaster autoWiggleOnUpdate="toast-change" pauseWhenPageIsHidden />
+      )} */}
+        {/* {isUpgradeRequired && <UpgradeBanner />} */}
+        <View className="px-6">
+          <Text className="mb-2 font-bold-poppins text-3xl text-white">
+            {translate('settings.tab')}
           </Text>
-          <SettingsContainer title="settings.generale">
-            <LanguageItem />
-            <ThemeItem />
-          </SettingsContainer>
+        </View>
+        <View className="flex-1">
+          <View className="mb-20 px-6">
+            <ItemsContainer title="settings.generale">
+              <Item
+                text="settings.profile"
+                onPress={() => router.navigate('/profile')}
+              />
+              <Item
+                text="settings.shop"
+                onPress={() => router.navigate('/shop')}
+              />
+              <LanguageItem />
+              <ThemeItem />
+              <Item
+                text="settings.contactUs"
+                onPress={() => router.navigate('/contact-us')}
+              />
+            </ItemsContainer>
 
-          <SettingsContainer title="settings.about">
-            <SettingsItem
-              text="settings.app_name"
-              value={Env.EXPO_PUBLIC_NAME}
-            />
-            <SettingsItem
-              text="settings.version"
-              value={Env.EXPO_PUBLIC_VERSION}
-            />
-          </SettingsContainer>
+            <ItemsContainer title="settings.about">
+              <Item text="settings.app_name" value={Env.NAME} />
+              <Item text="settings.version" value={Env.VERSION} />
+            </ItemsContainer>
 
-          <SettingsContainer title="settings.support_us">
-            <SettingsItem
-              text="settings.share"
-              icon={<Share color={iconColor} />}
-              onPress={() => {}}
-            />
-            <SettingsItem
-              text="settings.rate"
-              icon={<Rate color={iconColor} />}
-              onPress={() => {}}
-            />
-            <SettingsItem
-              text="settings.support"
-              icon={<Support color={iconColor} />}
-              onPress={() => {}}
-            />
-          </SettingsContainer>
+            <ItemsContainer title="settings.support_us">
+              {/* <ShareItem /> */}
 
-          <SettingsContainer title="settings.links">
-            <SettingsItem text="settings.privacy" onPress={() => {}} />
-            <SettingsItem text="settings.terms" onPress={() => {}} />
-            <SettingsItem
-              text="settings.github"
-              icon={<Github color={iconColor} />}
-              onPress={() => {}}
-            />
-            <SettingsItem
-              text="settings.website"
-              icon={<Website color={iconColor} />}
-              onPress={() => {}}
-            />
-          </SettingsContainer>
+              {SHOW_RATE_SCREEN && (
+                <Item
+                  text="settings.rate"
+                  icon={<Rate color={iconColor} />}
+                  onPress={() => router.navigate('/rate')}
+                />
+              )}
+            </ItemsContainer>
 
-          <View className="my-8">
-            <SettingsContainer>
-              <SettingsItem text="settings.logout" onPress={signOut} />
-            </SettingsContainer>
+            <ItemsContainer title="settings.links">
+              <Item
+                text="settings.privacy"
+                onPress={() =>
+                  Linking.openURL('https://exfitai-privacy.netlify.app/')
+                }
+              />
+              <Item
+                text="settings.terms"
+                onPress={() =>
+                  Linking.openURL(
+                    'https://exfitai-terms-conditions.netlify.app/',
+                  )
+                }
+              />
+              {SHOW_FAQ_SCREEN && (
+                <Item
+                  text="settings.faq"
+                  onPress={() => console.log('go to faq screen')}
+                />
+              )}
+            </ItemsContainer>
+
+            <Button
+              label={translate('settings.logout')}
+              icon={<LogoutIcon width={30} height={30} />}
+              variant="destructive"
+              className="mt-4 h-[48px] rounded-full active:opacity-80"
+              textClassName="font-medium-poppins text-base"
+              iconPosition="left"
+              onPress={handleLogout}
+            />
+
+            {__DEV__ && ( // change the condition here so this will be available in dev/prod only for an admin account
+              <>
+                <ItemsContainer title="settings.devMode.title">
+                  <Item
+                    text="settings.devMode.componentsLibrary"
+                    onPress={() => router.navigate('/ui-library')}
+                  />
+                </ItemsContainer>
+
+                <View>
+                  <ItemsContainer title="general.utils">
+                    <Item
+                      text="general.verifyEmail"
+                      onPress={() => router.navigate('/verify-email')}
+                    />
+
+                    <Item
+                      text="settings.permanentAccountCreate"
+                      onPress={() => router.navigate('/upgrade-account')}
+                    />
+
+                    <Item
+                      text="Send global push notification"
+                      onPress={() =>
+                        onHandleGlobalPushNotifications({
+                          title: 'This is a global notification title',
+                          body: 'This is a global notification body',
+                          language,
+                        })
+                      }
+                    />
+                    <Item
+                      text="Send individual push notification"
+                      onPress={() =>
+                        onHandleIndividualNotification({
+                          title:
+                            'Hinweis zu persönlichen medizinischen Bildern',
+                          body: 'Wir empfehlen NICHT, persönliche medizinische Bilder zur individuellen Analyse auf EXFIT AI hochzuladen, da die Ergebnisse nicht als endgültig betrachtet werden sollten. Unsere KI-Modelle werden noch erforscht und verfeinert und es können potenzielle Ungenauigkeiten auftreten. Es eignet sich hervorragend zum Lernen und um allgemeine Einblicke zu gewinnen, für ausführlichere Überprüfungen sollten Sie jedoch einen Spezialisten konsultieren. Wenn Sie Fragen haben, kontaktieren Sie uns per E-Mail - microscanaiapp@gmail.com',
+                          // title: 'Notice About Personal microscopy Images',
+                          // body: 'We DO NOT encourage uploading personal microscopy images to EXFIT AI for individual analysis, as the results should not be considered final. Our AI models are still being researched and refined, and potential inaccuracies may occur. It’s great for learning and get general insights, but for in-depth reviews, consult a specialist. If you have any questions contact us via email - microscanaiapp@gmail.com',
+                          userId: '',
+                          language,
+                        })
+                      }
+                    />
+
+                    <Item
+                      text="Add completedScans field to userInfo"
+                      // ! be careful with the below functions
+                      onPress={() =>
+                        onAddFieldsToCollection({
+                          fields: {
+                            // add fields here
+                            // completedScans: 0,
+                          },
+                          collectionName: 'users',
+                        })
+                      }
+                    />
+                  </ItemsContainer>
+                </View>
+              </>
+            )}
           </View>
         </View>
-      </ScrollView>
-    </>
+      </SafeAreaView>
+    </ScrollView>
+    // </ScreenWrapper>
   );
 }

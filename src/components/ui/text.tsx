@@ -1,4 +1,3 @@
-/* eslint-disable better-tailwindcss/no-unknown-classes */
 import type { TextProps, TextStyle } from 'react-native';
 import type { TxKeyPath } from '@/lib/i18n';
 import * as React from 'react';
@@ -12,17 +11,11 @@ type Props = {
   tx?: TxKeyPath;
 } & TextProps;
 
-export function Text({
-  className = '',
-  style,
-  tx,
-  children,
-  ...props
-}: Props) {
+export function Text({ className = '', style, tx, children, ...props }: Props) {
   const textStyle = React.useMemo(
     () =>
       twMerge(
-        'font-inter text-base font-normal text-black dark:text-white',
+        'font-primary-poppins text-base text-black dark:text-white',
         className,
       ),
     [className],
