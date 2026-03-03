@@ -1,15 +1,14 @@
+import type { CustomerInfo } from 'react-native-purchases';
+
+import type { Nullable } from 'types/general-types';
 // For deep comparison
 import { useEffect } from 'react';
-import { type CustomerInfo } from 'react-native-purchases';
-
 import { useUpdateUser, useUser } from '@/api/user/user.hooks';
-import { type Nullable } from '@/types/general-types';
+import { useSelectedLanguage } from '@/lib/i18n';
 
-import { useSelectedLanguage } from '../i18n';
-
-export const useUpdateUserSubscription = (
-  customerInfo: Nullable<CustomerInfo>
-) => {
+export function useUpdateUserSubscription(
+  customerInfo: Nullable<CustomerInfo>,
+) {
   const { language } = useSelectedLanguage();
   const { data: userInfo } = useUser(language);
   const { mutateAsync: onUpdateUser, isPending: isPendingUpdateUser } =
@@ -38,9 +37,7 @@ export const useUpdateUserSubscription = (
           userId: userInfo.userId,
           fieldsToUpdate: {
             ...customerSubscriptionData,
-            isFreeTrialOngoing: customerInfo.activeSubscriptions.length
-              ? false
-              : true,
+            isFreeTrialOngoing: !customerInfo.activeSubscriptions.length,
           },
         });
 
@@ -54,4 +51,4 @@ export const useUpdateUserSubscription = (
   }, [customerInfo, userInfo, language, onUpdateUser]);
 
   return { isPendingUpdateUser };
-};
+}

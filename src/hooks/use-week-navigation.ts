@@ -1,9 +1,10 @@
+import type { TPositions } from '@/constants/positions';
+
+import type { IDayOfWeek } from '@/types/date-time';
 import { useState } from 'react';
+import { POSITIONS } from '@/constants/positions';
 
-import { POSITIONS, type TPositions } from '@/constants/positions';
-import { type IDayOfWeek } from '@/types/date-time';
-
-import { useSelectedLanguage } from '../i18n';
+import { useSelectedLanguage } from '@/lib/i18n';
 import {
   getCurrentDay,
   getCurrentMonth,
@@ -19,24 +20,24 @@ import {
 /**
  * Custom hook used to handle the navigation between weeks
  */
-export const useWeekNavigation = () => {
+export function useWeekNavigation() {
   const [weekOffset, setWeekOffset] = useState<number>(0);
 
   const { language } = useSelectedLanguage();
-
+  console.log('language', language);
   const weekNumber: number = getWeekNumber(weekOffset, language);
   const currentYear = getYearFromWeekOffset(weekOffset, language);
 
   const weekDates: IDayOfWeek[] = getDaysOfWeek(
     weekNumber,
     currentYear,
-    language
+    language,
   );
   const currentMonth = getCurrentMonth(currentYear, weekNumber, language);
   const currentMonthNumber = getCurrentMonthNumber(
     currentYear,
     weekNumber,
-    language
+    language,
   );
   const segmentedDays = getSegmentedDays(weekDates);
   const interval = getWeekInterval(currentYear, weekNumber, language);
@@ -46,10 +47,10 @@ export const useWeekNavigation = () => {
   const { startOfWeek, endOfWeek } = getStartAndEndWeek(
     currentYear,
     weekNumber,
-    language
+    language,
   );
   const initialDayFocused = segmentedDays.find(
-    (day) => day.title === currentDay
+    (day) => day.title === currentDay,
   );
 
   const changeWeekOffset = (iconPosition: TPositions) => {
@@ -77,4 +78,4 @@ export const useWeekNavigation = () => {
     currentMonthNumber,
     currentDayNumber,
   };
-};
+}

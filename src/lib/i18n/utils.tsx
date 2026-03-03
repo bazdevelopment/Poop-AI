@@ -1,13 +1,15 @@
 import type TranslateOptions from 'i18next';
 import type { Language, resources } from './resources';
 import type { RecursiveKeyOf } from './types';
+import { getLocales } from 'expo-localization';
 import i18n from 'i18next';
 import memoize from 'lodash.memoize';
 import { useCallback } from 'react';
-import { I18nManager, NativeModules, Platform } from 'react-native';
 
+import { I18nManager, NativeModules, Platform } from 'react-native';
 import { useMMKVString } from 'react-native-mmkv';
 import RNRestart from 'react-native-restart';
+import { ACCEPTED_LANGUAGES_CODES } from '@/constants/language';
 import { storage } from '../storage';
 
 type DefaultLocale = typeof resources.en.translation;
@@ -26,18 +28,16 @@ export const translate = memoize(
 
 export function changeLanguage(lang: Language) {
   i18n.changeLanguage(lang);
-  if (lang === 'ar') {
+  // !!arabic and hebrew are RTL languages
+  if (lang === 'ar' || lang === 'he') {
     I18nManager.forceRTL(true);
-  }
-  else {
+  } else {
     I18nManager.forceRTL(false);
   }
   if (Platform.OS === 'ios' || Platform.OS === 'android') {
-    if (__DEV__)
-      NativeModules.DevSettings.reload();
+    if (__DEV__) NativeModules.DevSettings.reload();
     else RNRestart.restart();
-  }
-  else if (Platform.OS === 'web') {
+  } else if (Platform.OS === 'web') {
     window.location.reload();
   }
 }
@@ -48,11 +48,24 @@ export function useSelectedLanguage() {
   const setLanguage = useCallback(
     (lang: Language) => {
       setLang(lang);
-      if (lang !== undefined)
-        changeLanguage(lang as Language);
+      if (lang !== undefined) changeLanguage(lang as Language);
     },
     [setLang],
   );
 
-  return { language: language as Language, setLanguage };
+  return {
+    language:
+      (language as Language) ||
+      getValidLanguageCode(getLocales()[0].languageCode as string),
+    setLanguage,
+  };
+}
+
+export function getValidLanguageCode(inputLanguageCode: string) {
+  // Extract the list of valid language codes from the langs array
+  const validLanguageCodes = ACCEPTED_LANGUAGES_CODES.map((lang) => lang.value);
+  // Check if the inputLanguageCode exists in the validLanguageCodes array
+  return validLanguageCodes.includes(inputLanguageCode)
+    ? inputLanguageCode
+    : 'en';
 }

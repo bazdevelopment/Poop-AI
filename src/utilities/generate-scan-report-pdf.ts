@@ -4,25 +4,26 @@ import { translate } from '../i18n';
 
 const IconTransparent = require('assets/icon-5.png');
 
-const getAndroidReleaseImageURI = (assetName: string) =>
-  `file:///android_res/drawable/${assetName}`;
+function getAndroidReleaseImageURI(assetName: string) {
+  return `file:///android_res/drawable/${assetName}`;
+}
 
-interface IGenerateScanReportPdf {
+type IGenerateScanReportPdf = {
   createdAt: string;
   interpretation: string;
   promptMessage: string;
   generatedAt: string;
-}
+};
 
-export const generateScanReportPdf = ({
+export function generateScanReportPdf({
   createdAt,
   messages,
   // promptMessage,
   generatedAt,
-}: IGenerateScanReportPdf) => {
+}: IGenerateScanReportPdf) {
   const logo = Platform.select({
     ios: Image.resolveAssetSource(IconTransparent).uri,
-    android: getAndroidReleaseImageURI('icon_transparent.png'),
+    android: getAndroidReleaseImageURI('icon_transparent-v2.png'),
   });
 
   // const medicalFrame = Platform.select({
@@ -188,4 +189,4 @@ export const generateScanReportPdf = ({
 </body>
 </html>
   `;
-};
+}

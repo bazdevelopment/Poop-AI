@@ -27,7 +27,7 @@ export function LanguageItem() {
   );
 
   const selectedLanguage = React.useMemo(
-    () => langs.find(lang => lang.value === language),
+    () => langs.find((lang) => lang.value === language),
     [language, langs],
   );
 

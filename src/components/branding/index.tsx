@@ -22,7 +22,7 @@ function Branding({
       {isLogoVisible && (
         <View className="rounded-xl bg-transparent">
           <Image
-            source={require('assets/icon.png')}
+            source={require('assets/icon_transparent-v2.png')}
             className={`size-[50px] ${imageClassname}`}
           />
         </View>

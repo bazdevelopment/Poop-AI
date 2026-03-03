@@ -1,1 +1,3 @@
-export { FeedScreen as default } from '@/features/feed/feed-screen';
+import { HomeScreen } from '@/features/feed/home-screen';
+
+export default HomeScreen;

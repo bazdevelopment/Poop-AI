@@ -1,6 +1,6 @@
 import { useGetCustomerInfo } from '@/api/subscription/subscription.hooks';
 
-const useSubscriptionAlert = () => {
+function useSubscriptionAlert() {
   const { data: customerInfo } = useGetCustomerInfo();
 
   const hasActiveSubscription = !!customerInfo?.activeSubscriptions?.length;
@@ -9,6 +9,6 @@ const useSubscriptionAlert = () => {
   return {
     isUpgradeRequired,
   };
-};
+}
 
 export default useSubscriptionAlert;
