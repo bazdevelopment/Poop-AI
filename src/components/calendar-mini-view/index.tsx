@@ -169,7 +169,6 @@ function DayItem({
   onPress?: () => void;
   layout?: 'horizontal' | 'vertical';
 }) {
-  console.log('status boss', status);
   const getIcon = () => {
     switch (status) {
       case 'completed':
