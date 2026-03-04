@@ -1,40 +1,48 @@
 {
   "project_info": {
-    "project_number": "596558526481",
-    "project_id": "exfit-ai-prod",
-    "storage_bucket": "exfit-ai-prod.firebasestorage.app"
+    "project_number": "314416989207",
+    "project_id": "poop-ai-prod",
+    "storage_bucket": "poop-ai-prod.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:596558526481:android:9b2bf00faf9e5ff01dd9b0",
+        "mobilesdk_app_id": "1:314416989207:android:4f50d3f4f926235dd24852",
         "android_client_info": {
-          "package_name": "com.exfit"
+          "package_name": "com.poopai"
         }
       },
       "oauth_client": [
         {
-          "client_id": "596558526481-b2e8a7n07hf140f6t06f5e2a64os2c5i.apps.googleusercontent.com",
+          "client_id": "314416989207-ihcair3nfblth1q11cn7p0ovev6jc88k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.poopai",
+            "certificate_hash": "86eceae592a936d01ea8c786a2375092a905da4a"
+          }
+        },
+        {
+          "client_id": "314416989207-0c2jgfqjmfam7i2orltqe9c4oonmso7f.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBp575zgtOxrVozFLRH3LjAGXajjmOMwOo"
+          "current_key": "AIzaSyDWApGie4sZ1fYG8eBpPFhERs29EFhwhc8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "596558526481-b2e8a7n07hf140f6t06f5e2a64os2c5i.apps.googleusercontent.com",
+              "client_id": "314416989207-0c2jgfqjmfam7i2orltqe9c4oonmso7f.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "596558526481-eg1ppu2eov2rthp5fiepvinm6nqc3bur.apps.googleusercontent.com",
+              "client_id": "314416989207-c8qa9o9agv5j02j8o34ko8istbt2sfft.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.exfitai"
+                "bundle_id": "com.poopai"
               }
             }
           ]

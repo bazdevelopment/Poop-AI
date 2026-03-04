@@ -24,7 +24,7 @@ export function useWeekNavigation() {
   const [weekOffset, setWeekOffset] = useState<number>(0);
 
   const { language } = useSelectedLanguage();
-  console.log('language', language);
+
   const weekNumber: number = getWeekNumber(weekOffset, language);
   const currentYear = getYearFromWeekOffset(weekOffset, language);
 

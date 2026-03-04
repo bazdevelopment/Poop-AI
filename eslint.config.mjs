@@ -136,7 +136,7 @@ export default antfu(
         {
           syntax: path.resolve(
             __dirname,
-            './scripts/i18next-syntax-validation.js'
+            './scripts/i18next-syntax-validation.js',
           ),
         },
       ],
@@ -160,5 +160,5 @@ export default antfu(
     rules: {
       ...testingLibrary.configs.react.rules,
     },
-  }
+  },
 );

@@ -3,21 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>596558526481-v9f6g1b0vsks6d1td7s2q7v7h4a8qja2.apps.googleusercontent.com</string>
+	<string>314416989207-c8qa9o9agv5j02j8o34ko8istbt2sfft.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.596558526481-v9f6g1b0vsks6d1td7s2q7v7h4a8qja2</string>
+	<string>com.googleusercontent.apps.314416989207-c8qa9o9agv5j02j8o34ko8istbt2sfft</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>314416989207-ihcair3nfblth1q11cn7p0ovev6jc88k.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyB8fr0GvqY55y8YeKaW1zjKz9RWQYB-2D8</string>
+	<string>AIzaSyCAonAEDXlc1MdnqLgzcfaqkX7V6i4pJeM</string>
 	<key>GCM_SENDER_ID</key>
-	<string>596558526481</string>
+	<string>314416989207</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.exfit</string>
+	<string>com.poopai</string>
 	<key>PROJECT_ID</key>
-	<string>exfit-ai-prod</string>
+	<string>poop-ai-prod</string>
 	<key>STORAGE_BUCKET</key>
-	<string>exfit-ai-prod.firebasestorage.app</string>
+	<string>poop-ai-prod.firebasestorage.app</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:596558526481:ios:e3674d8c819d62d91dd9b0</string>
+	<string>1:314416989207:ios:46ffe4abeb7abac9d24852</string>
 </dict>
 </plist>

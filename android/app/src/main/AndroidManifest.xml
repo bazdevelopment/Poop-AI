@@ -33,6 +33,7 @@
         <category android:name="android.intent.category.BROWSABLE"/>
         <data android:scheme="Poop AI"/>
         <data android:scheme="exp+poopaiapp"/>
+        <data android:scheme="exp+poop-ai"/>
       </intent-filter>
     </activity>
   </application>
