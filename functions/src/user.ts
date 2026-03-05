@@ -80,12 +80,6 @@ async function loginUserAnonymouslyHandler(data: {
         preferredLanguage: data.language || 'en', // Use the provided language or default to 'en'
         completedScans: 0, // Example field
         email: '',
-        profilePictureUrl: '',
-        onboarding: {
-          gender: '',
-          fitnessGoals: [],
-          experience: '',
-        },
         gamification: {
           currentStreak: 0,
           longestStreak: 0,
@@ -98,12 +92,6 @@ async function loginUserAnonymouslyHandler(data: {
           streakFreezeUsageDates: [],
           streakRepairDates: [],
           streakResetDates: [],
-        },
-        macroGoals: {
-          calories: 0,
-          protein: 0,
-          carbs: 0,
-          fat: 0,
         },
       });
 

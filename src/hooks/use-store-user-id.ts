@@ -1,10 +1,10 @@
 import { useMMKVString } from 'react-native-mmkv';
 
-import { storage } from '../storage';
+import { storage } from '../lib/storage';
 
 const USER_ID = 'USER_ID';
 
-export const useStoreUserId = () => {
+export function useStoreUserId() {
   const [userId, setUserId] = useMMKVString(USER_ID, storage);
 
   // If userId is undefined (not set), return an empty string as the default value
@@ -13,4 +13,4 @@ export const useStoreUserId = () => {
   }
 
   return [userId, setUserId] as const;
-};
+}

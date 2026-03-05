@@ -30,11 +30,11 @@ import {
   View,
 } from '@/components/ui';
 import { LogoutIcon, Rate } from '@/components/ui/assets/icons';
+import { useIsFirstTime } from '@/hooks';
 import { useFirstOnboarding } from '@/hooks/use-first-onboarding';
 import useRemoteConfig from '@/hooks/use-remote-config';
 import { useSecondOnboarding } from '@/hooks/use-second-onboarding';
 import useSubscriptionAlert from '@/hooks/use-subscription-banner';
-import { useIsFirstTime } from '@/lib/hooks';
 import { translate, useSelectedLanguage } from '@/lib/i18n';
 import Env from '../../../env';
 

@@ -2,7 +2,7 @@ import type { ITabsNavigationScreen } from '@/lib/navigation/tabs/tabs.interface
 import { useNetInfo } from '@react-native-community/netinfo';
 import * as QuickActions from 'expo-quick-actions';
 import { useQuickActionRouting } from 'expo-quick-actions/router';
-import { Redirect, Tabs, useSegments } from 'expo-router';
+import { Redirect, router, Tabs, useSegments } from 'expo-router';
 import { firebaseAuth } from 'firebase/config';
 import { checkForAppUpdate } from 'firebase/remote-config';
 import * as React from 'react';
@@ -15,16 +15,16 @@ import CustomHeader from '@/components/cusom-header';
 import InitialLoadSpinner from '@/components/initial-load-spinner.ts';
 import { TabBarIcon } from '@/components/tab-bar-icon';
 
-import { colors, SafeAreaView } from '@/components/ui';
+import { colors, SafeAreaView, useModal } from '@/components/ui';
 
+import { useIsFirstTime } from '@/hooks';
 import { useCrashlytics } from '@/hooks/use-crashlytics';
-import { useFirstOnboarding } from '@/hooks/use-first-onboarding';
 import { useHaptic } from '@/hooks/use-haptics';
+import { useIsOnboarded } from '@/hooks/use-is-onboarded';
 import useKeyboard from '@/hooks/use-keyboard';
 import { usePushNotificationToken } from '@/hooks/use-push-notification-token';
+import usePushNotifications from '@/hooks/use-push-notifications';
 import useRemoteConfig from '@/hooks/use-remote-config';
-import { useSecondOnboarding } from '@/hooks/use-second-onboarding';
-import { useIsFirstTime } from '@/lib/hooks';
 import { translate, useSelectedLanguage } from '@/lib/i18n';
 import { tabScreens } from '@/lib/navigation/tabs';
 import { getBottomTabBarStyle } from '@/lib/navigation/tabs/tabs.styles';
@@ -34,30 +34,47 @@ import NoInternet from '../no-internet';
 export default function TabLayout() {
   const isLoggedIn = !!firebaseAuth.currentUser?.uid;
   const [isFirstTime] = useIsFirstTime();
-  const [isFirstOnboardingDone] = useFirstOnboarding();
-  const [isSecondOnboardingDone] = useSecondOnboarding();
-
   const { language } = useSelectedLanguage();
-  const { logEvent } = useCrashlytics();
+  const { isConnected } = useNetInfo();
+  const modal = useModal();
+
+  usePushNotifications(); // push notifications popup
   const { storeDeviceInfo } = usePushNotificationToken();
-  const { data: userInfo, isPending: isPendingUserinfo } = useUser(language);
+
   const addSelectionHapticEffect = useHaptic('selection');
+  const addHeavyHapticEffect = useHaptic('heavy');
   const { isPending: isPendingRevenueCatSdkInit } = useInitializeRevenueCat(
     firebaseAuth.currentUser?.uid as string,
   );
-  const segments = useSegments();
-  const { isKeyboardVisible } = useKeyboard();
-
+  const { data: userInfo, isPending: isPendingUserinfo } = useUser(language);
   const { theme } = useUniwind();
   const isDark = theme === 'dark';
+  const segments = useSegments();
+
   const bottomTabBarStyles = getBottomTabBarStyle(isDark);
+  const { isKeyboardVisible } = useKeyboard();
+
+  const { logEvent } = useCrashlytics();
+  const [isOnboarded] = useIsOnboarded();
 
   useQuickActionRouting();
-  const { isConnected } = useNetInfo();
-  // const { MINIMUM_VERSION_ALLOWED } = useRemoteConfig();
-  // checkForAppUpdate(MINIMUM_VERSION_ALLOWED);
-  // //todo: make sure if it's good to update the user info that often with the subscription data, I did it now in case we need at some point the subscription details in the BE and ot be up to date in case the user cancel the subscription
-  // useUpdateUserSubscription(customerInfo);
+
+  const { MINIMUM_VERSION_ALLOWED } = useRemoteConfig();
+
+  checkForAppUpdate(MINIMUM_VERSION_ALLOWED);
+
+  useEffect(() => {
+    // Guard clause: Skip logic if isConnected is null
+    if (isConnected === null) return;
+
+    if (!isConnected) {
+      router.navigate('/no-internet');
+      // playSound('error');
+      addHeavyHapticEffect?.();
+    } else {
+      modal.dismiss();
+    }
+  }, [isConnected, modal, addHeavyHapticEffect]);
 
   useEffect(() => {
     QuickActions.setItems<QuickActions.Action>([
@@ -71,30 +88,29 @@ export default function TabLayout() {
     ]);
   }, []);
 
-  // useEffect(() => {
-  //   storeDeviceInfo();
-  // }, []);
+  useEffect(() => {
+    storeDeviceInfo();
+  }, []);
 
-  // if (isConnected === false && isConnected !== null) return <NoInternet />;
+  if (isConnected === false && isConnected !== null) return <NoInternet />;
 
-  // if (isPendingUserinfo || isPendingRevenueCatSdkInit)
-  //   return <InitialLoadSpinner />;
+  if (isPendingUserinfo || isPendingRevenueCatSdkInit)
+    return <InitialLoadSpinner />;
 
-  // if (isFirstTime) {
-  //   return <Redirect href="/welcome" />;
-  // }
-  // if (!isFirstOnboardingDone) {
-  //   return <Redirect href="/onboarding-first" />;
-  // }
-
-  // if (!isLoggedIn) {
-  //   logEvent(`User ${userInfo?.userId} is redirected to login screen`);
-  //   return <Redirect href="/anonymous-login" />;
-  // }
-
-  // if (!isSecondOnboardingDone) {
-  //   return <Redirect href="/onboarding-second" />;
-  // }
+  if (isFirstTime && !userInfo) {
+    logEvent(`User ${userInfo?.userId} is redirected to welcome screen`);
+    return <Redirect href="/welcome" />;
+  }
+  if (isFirstTime && !isLoggedIn) {
+    logEvent(`User ${userInfo?.userId} is redirected to welcome screen`);
+    return <Redirect href="/welcome" />;
+  }
+  if (!isPendingUserinfo && !isPendingRevenueCatSdkInit && !userInfo) {
+    return <Redirect href="/welcome" />;
+  }
+  if (!isOnboarded) {
+    return <Redirect href="/onboarding" />;
+  }
 
   return (
     <Tabs

@@ -1520,6 +1520,8 @@ PODS:
     - ExpoModulesCore
   - ExpoSplashScreen (31.0.13):
     - ExpoModulesCore
+  - ExpoStoreReview (9.0.9):
+    - ExpoModulesCore
   - ExpoSystemUI (6.0.9):
     - ExpoModulesCore
   - EXUpdatesInterface (2.0.0):
@@ -4961,6 +4963,7 @@ DEPENDENCIES:
   - "ExpoQuickActions (from `../node_modules/.pnpm/expo-quick-actions@6.0.1_expo@54.0.32/node_modules/expo-quick-actions/ios`)"
   - "ExpoSpeech (from `../node_modules/.pnpm/expo-speech@14.0.8_expo@54.0.32/node_modules/expo-speech/ios`)"
   - "ExpoSplashScreen (from `../node_modules/.pnpm/expo-splash-screen@31.0.13_expo@54.0.32/node_modules/expo-splash-screen/ios`)"
+  - "ExpoStoreReview (from `../node_modules/.pnpm/expo-store-review@9.0.9_expo@54.0.32_react-native@0.81.5_@babel+core@7.28.6_@types+react@19.1.17_react@19.1.0_/node_modules/expo-store-review/ios`)"
   - "ExpoSystemUI (from `../node_modules/.pnpm/expo-system-ui@6.0.9_expo@54.0.32_react-native-web@0.21.2_react-dom@19.1.0_react@19.1.0_f50a4c3429b0e4ab285136ba1e1e78df/node_modules/expo-system-ui/ios`)"
   - "EXUpdatesInterface (from `../node_modules/.pnpm/expo-updates-interface@2.0.0_expo@54.0.32/node_modules/expo-updates-interface/ios`)"
   - "fast_float (from `../node_modules/.pnpm/react-native@0.81.5_@babel+core@7.28.6_@types+react@19.1.17_react@19.1.0/node_modules/react-native/third-party-podspecs/fast_float.podspec`)"
@@ -5172,6 +5175,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/.pnpm/expo-speech@14.0.8_expo@54.0.32/node_modules/expo-speech/ios"
   ExpoSplashScreen:
     :path: "../node_modules/.pnpm/expo-splash-screen@31.0.13_expo@54.0.32/node_modules/expo-splash-screen/ios"
+  ExpoStoreReview:
+    :path: "../node_modules/.pnpm/expo-store-review@9.0.9_expo@54.0.32_react-native@0.81.5_@babel+core@7.28.6_@types+react@19.1.17_react@19.1.0_/node_modules/expo-store-review/ios"
   ExpoSystemUI:
     :path: "../node_modules/.pnpm/expo-system-ui@6.0.9_expo@54.0.32_react-native-web@0.21.2_react-dom@19.1.0_react@19.1.0_f50a4c3429b0e4ab285136ba1e1e78df/node_modules/expo-system-ui/ios"
   EXUpdatesInterface:
@@ -5397,6 +5402,7 @@ SPEC CHECKSUMS:
   ExpoQuickActions: 61e27ec458e4e06b854ddc6967c2b57aa6a772d5
   ExpoSpeech: d22b56570ccfab5a27112dc9691f1ac83537de26
   ExpoSplashScreen: bc3cffefca2716e5f22350ca109badd7e50ec14d
+  ExpoStoreReview: 32bb43b6fae9c8db3e33cad69996dff3785eef5f
   ExpoSystemUI: 2ad325f361a2fcd96a464e8574e19935c461c9cc
   EXUpdatesInterface: 5adf50cb41e079c861da6d9b4b954c3db9a50734
   fast_float: b32c788ed9c6a8c584d114d0047beda9664e7cc6

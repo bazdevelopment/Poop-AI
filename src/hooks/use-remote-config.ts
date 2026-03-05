@@ -8,7 +8,7 @@ import {
 } from '@/constants/limits';
 
 const DEFAULT_CONFIGS = {
-  MINIMUM_VERSION_ALLOWED: '1.0.0',
+  MINIMUM_VERSION_ALLOWED: '0.0.0',
   SHOW_FAQ_SCREEN: false,
   SHOW_RATE_SCREEN: false,
   SHOW_ADMIN_SCREENS: false,
@@ -46,7 +46,6 @@ function useRemoteConfig(): RemoteConfigType {
   // Helper function to get all config values
   const getParsedConfigs = useCallback(() => {
     const allConfigs = remoteConfig().getAll();
-
     // Transform to simple key-value object
     const parsedEntries = Object.entries(allConfigs).map(([key, value]) => {
       const stringValue = value.asString();

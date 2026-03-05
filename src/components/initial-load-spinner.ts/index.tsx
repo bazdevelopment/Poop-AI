@@ -19,7 +19,7 @@ function InitialLoadSpinner() {
         <Branding
           isLogoVisible
           className="top-[-25]"
-          imageClassname="size-[90px]"
+          imageClassname="size-[120px]"
         />
         {/* Rotating Spinner */}
         <ActivityIndicator

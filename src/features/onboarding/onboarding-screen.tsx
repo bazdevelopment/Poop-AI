@@ -4,6 +4,7 @@ import * as React from 'react';
 import {
   Button,
   FocusAwareStatusBar,
+  Image,
   SafeAreaView,
   Text,
   View,
@@ -18,7 +19,11 @@ export function OnboardingScreen() {
     <View className="flex h-full items-center justify-center">
       <FocusAwareStatusBar />
       <View className="w-full flex-1">
-        <Cover />
+        <Image
+          source={require('../../components/ui/assets/images/toilet-2.png')}
+          className="size-full"
+        />
+        {/* <Cover /> */}
       </View>
       <View className="justify-end">
         <Text className="my-3 text-center font-bold-poppins text-5xl">

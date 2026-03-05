@@ -9,7 +9,6 @@ import 'tsx/cjs';
 import Env from './env';
 
 const EXPO_ACCOUNT_OWNER = 'bazdevelopment';
-const EAS_PROJECT_ID = 'f9f6269b-8442-4a79-be81-dc6f0974b82a';
 
 const appIconBadgeConfig: AppIconBadgeConfig = {
   enabled: Env.EXPO_PUBLIC_APP_ENV !== 'production',
@@ -219,7 +218,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ],
   extra: {
     eas: {
-      projectId: EAS_PROJECT_ID,
+      projectId: Env.EXPO_PUBLIC_EAS_PROJECT_ID,
     },
   },
 });

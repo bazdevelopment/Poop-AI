@@ -23,7 +23,7 @@ export async function storeMobileDeviceToken({
       deviceToken,
       platform,
       version,
-      deviceName,
+      deviceName: '',
       deviceModel,
       deviceBrand,
       language,

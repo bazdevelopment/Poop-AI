@@ -25,6 +25,7 @@ export async function createAnonymousAccount({
   timezone: string;
 }) {
   try {
+    console.log('aci', username, language, actualUserId, timezone);
     const { data }: { data: any } =
       await firebaseCloudFunctionsInstance.httpsCallable(
         'loginUserAnonymously',
