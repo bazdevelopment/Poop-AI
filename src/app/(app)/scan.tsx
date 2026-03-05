@@ -55,7 +55,6 @@ const Scan: React.FC<CameraScanScreenProps> = () => {
 
   const { isUpgradeRequired } = useSubscriptionAlert();
   const userId = firebaseAuth.currentUser?.uid as string;
-
   const conversationId = generateUniqueId();
 
   const onSuccess = ({ conversationId }: { conversationId: string }) => {

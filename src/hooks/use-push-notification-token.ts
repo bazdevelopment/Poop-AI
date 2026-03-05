@@ -12,7 +12,7 @@ export function usePushNotificationToken() {
   const { language } = useSelectedLanguage();
   const storeDeviceInfo = async () => {
     try {
-      const projectId = Env?.eas?.projectId as string;
+      const projectId = Env.EXPO_PUBLIC_EAS_PROJECT_ID as string;
       if (!projectId) {
         Toast.error(translate('alerts.projectIdNotFound'));
         return;
@@ -26,8 +26,7 @@ export function usePushNotificationToken() {
       const response = await storeMobileDeviceToken({
         deviceToken: token,
         platform: Platform.OS,
-        version: Env.VERSION,
-        deviceName: DeviceInfo.deviceName || '',
+        version: Env.EXPO_PUBLIC_VERSION,
         deviceModel: DeviceInfo.modelName || '',
         deviceBrand: DeviceInfo.brand || '',
         language,

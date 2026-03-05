@@ -1,15 +1,15 @@
 import storage from '@react-native-firebase/storage';
 
-export const uploadFilesToFirebase = async (
+export async function uploadFilesToFirebase(
   localFilePaths: string[],
   storagePaths: string[],
-  metadataArray: { [key: string]: any }[] = []
-): Promise<string[]> => {
+  metadataArray: { [key: string]: any }[] = [],
+): Promise<string[]> {
   try {
     // Ensure the arrays are of the same length
     if (localFilePaths.length !== storagePaths.length) {
       throw new Error(
-        'The number of local file paths, storage paths, and metadata objects must match.'
+        'The number of local file paths, storage paths, and metadata objects must match.',
       );
     }
 
@@ -37,4 +37,4 @@ export const uploadFilesToFirebase = async (
     console.error('Error uploading files to Firebase Storage:', error);
     throw new Error('Failed to upload files to Firebase Storage');
   }
-};
+}

@@ -1,15 +1,15 @@
 import { Platform } from 'react-native';
 
 export const SUBSCRIPTIONS_PLANS_ANDROID = {
-  YEARLY: 'exfit_ai_1year_subscription:yearly-subscription',
-  MONTHLY: 'exfit_ai_1month_subscription:monthly-subscription',
-  WEEKLY: 'exfit_ai_1week_subscription:weekly-subscription',
+  YEARLY: '',
+  MONTHLY: '',
+  WEEKLY: '',
 };
 
 export const SUBSCRIPTIONS_PLANS_IOS = {
-  YEARLY: 'exfit_ai_1year_subscription',
-  MONTHLY: 'exfit_ai_1month_subscription',
-  WEEKLY: 'exfit_ai_1week_subscription',
+  YEARLY: '',
+  MONTHLY: '',
+  WEEKLY: '',
 };
 
 export const SUBSCRIPTION_PLANS_PER_PLATFORM = Platform.select({

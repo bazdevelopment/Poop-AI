@@ -1,23 +1,784 @@
 {
+  "activity": {
+    "tab": "Activity"
+  },
+  "alerts": {
+    "accountDeleted": "Your account has been successfully deleted",
+    "anonymousSignInError": "Error signing in anonymously",
+    "capturePictureFailed": "Something went wrong while taking the photo",
+    "challengeAccepted": "Challenge accepted! 🔥 Now go crush it and earn those rewards!",
+    "challengeCompleted": "Challenge Completed! 🔥 You new rewards balance was updated.",
+    "chatAndMediaFilesLimit": "Dear user, upgrade your plan to enjoy unlimited calorie tracking, meal scans, fitness coaching, and more. 🔓",
+    "chatMessageNotSent": "Oops! Your message didn’t go through. Please try again",
+    "checkNotificationStatusError": "Error checking notification status.",
+    "chooseSubscriptionPlan": "Kindly choose a subscription plan to continue!",
+    "createActivityLogFailed": "Failed to create activity log. Please try again.",
+    "createPermanentAccountSuccess": "Your permanent account has been created! Your account is now secure. Oh, and you also received",
+    "deleteMacro": "Macro deleted—ready for your next entry!",
+    "deleteMacroLog": "Oops! Couldn’t remove your macro log. Please try again!",
+    "deleteScanReportFail": "Unable to delete the scan report. Please try again",
+    "deleteScanReportQuestion": "Are you sure you want to permanently delete this report?",
+    "emailLoginError": "Error when signing in",
+    "enableNotificationError": "An error occurred while enabling notifications",
+    "enableNotificationFailed": "Push notifications are disabled. Enable them in settings to receive important updates!",
+    "enableNotifications": {
+      "heading": "Enable Notifications",
+      "subHeading": "Notifications are currently turned off. To stay updated, please enable them in your device settings."
+    },
+    "errorSelectingDocumentPicker": "Something went wrong while picking the document. Please try again.",
+    "errorSelectingImagePicker": "Something went wrong while selecting the image. Please try again.",
+    "errorTakingPicture": "Something went wrong while taking the photo. Please try again.",
+    "excuseMinimum": "Please choose at least one excuse or type your own.",
+    "excusesLimit": "Oops, looks like you're trying to set a world record for excuses! 😅 Maximum 3 excuses allowed - pick your top 3 and let's get moving!",
+    "failedCreateMacroLog": "Oops! Macro log didn’t save. Please try again!",
+    "failedSendMessage": "Failed to send message. Please try again.",
+    "globalPushNotificationSuccess": "Global push notifications sent successfully! 🌍🚀",
+    "imageSizeLarge": "Image is too large! File size is {{fileSize}} MB, but the limit is {{imageLimit}} MB.",
+    "individualPushNotificationSuccess": "Individual push notifications sent successfully!",
+    "interpretationFieldsUpdateFail": "Failed to update interpretation fields! ❌",
+    "loggedInSuccess": "Successfully logged in",
+    "loggedOutSuccess": "You have logged out successfully!",
+    "loginSuccess": "Successfully logged in—let’s get moving!",
+    "logoutQuestion": "Are you sure you want to log out?",
+    "logoutUnsuccessful": "Logout unsuccessful. Please try again",
+    "macroEntryRecorded": "Macro intake recorded - keep it up! 🥗",
+    "mediaFilesUploadFiles": "There was an error uploading your media files. Please try again.",
+    "mediaPickerPermissions": "Sorry, we need camera permissions to make this work!",
+    "medicalDisclaimerAlert": "Poop AI app does not offer diagnoses, treatment recommendations, or any medical advice. Always seek guidance from a qualified healthcare professional for medical decisions.",
+    "mixedMediaNotAllowed": "Uploads must contain only images or only videos, not a mix of both.",
+    "multipleVideosNotAllowed": "For better accuracy, please upload only one video at a time.",
+    "noSubscriptionToRestore": "Oops! It looks like you don't have an active subscription at the moment. To continue enjoying full access, please choose one of our subscription plans.",
+    "notesSavedSuccess": "Notes saved! 📝 You’re all set.",
+    "notificationDisabledError": "An error occurred while disabling notifications.",
+    "notificationDisabledRegisterError": "Failed to unregister device for notifications.",
+    "notificationDisabledSuccess": "Notifications disabled successfully.",
+    "onboardingUnsuccessful": "Onboarding unsuccessful. Please try again",
+    "preferredLanguageError": "Error when updating user's preferred language",
+    "projectIdNotFound": "Notification project ID not found.",
+    "purchaseFailed": "Purchase failed. Please try again.",
+    "restorationError": "An error occurred while restoring the purchase.",
+    "restorationSuccessful": "Restoration was successful! Enjoy!",
+    "scanLimitReached": "We're optimizing scan quality for you! You'll be able to scan again in around {{hours}} hours and {{minutes}} minutes. Have any questions about any microscopy topic? Ask our chat assistant while you wait!",
+    "sendVerificationCodeError": "Error when sending verification code",
+    "sharingLinkError": "Failed to share link.",
+    "sharingNotAvailable": "Sharing is currently unavailable on your device",
+    "streakRepairFailed": "Failed to repair streak. Please try again.",
+    "subscriptionActivated": "Your subscription has been successfully activated! Enjoy your exclusive benefits!",
+    "subscriptionActivationFailed": "Failed to activate your subscription. Please try again",
+    "subscriptionCancelledByUser": "You've canceled the transaction. Feel free to try again!",
+    "updateActivityLogFailed": "Something went wrong while updating the activity log. Please try again.",
+    "validateAuthCodeError": "Error when validating auth code",
+    "videoLimitExceeds": "Your video exceeds the {{videoSecondsLimit}}-seconds limit. Please trim it and re-upload",
+    "videoSizeLarge": "Video is too large! File size is {{fileSize}} MB, but the limit is {{videoLimit}} MB."
+  },
+  "auth": {
+    "authCodeHeading": "Authentication code",
+    "emailAddress": "Email",
+    "loginViaEmailHeading": "Let’s get you signed in. Please enter your email to continue.",
+    "verifyAuthCode": "Verify authentication code",
+    "verifyAuthCodeButton": "Verify code"
+  },
+  "backHandler": {
+    "goBackMessage": "Are you sure you want to go back?",
+    "holdOn": "Hold on!"
+  },
+  "components": {
+    "AICoachBanner": {
+      "chat": "Chat with AI Coach",
+      "subtitle": "Master your fitness — ask about calories, nutrition, gym machines, poses, injuries, form, workout plans",
+      "title": "Got a Question? Just Ask."
+    },
+    "ActivitiesList": {
+      "addActivity": "Add Activity",
+      "addFirstActivity": "Add your first activity to earn gems and XP.",
+      "noActivityFound": "No activity found",
+      "todayActivities": "Today's Activities"
+    },
+    "ActivityCard": {
+      "activitySkipped": "skipped",
+      "addNotes": "Add notes",
+      "dayOff": "Day Off",
+      "description": "Description",
+      "excuseReason": "Excuse Reason ⚠️",
+      "notesPlaceholder": "E.g. Back and biceps workout, 3 super sets",
+      "yourNotes": "Your Notes 📝"
+    },
+    "ActivityLogSuccessModal": {
+      "heading": "Great job!",
+      "unlockReward": "You did it! One activity down, and you’ve unlocked your reward. Let’s keep the streak going!"
+    },
+    "ActivityPromptBanner": {
+      "bodyMovingQuestion": "Did you get your body moving today?",
+      "dailyCheckIn": "Daily Check-in"
+    },
+    "ActivitySelector": {
+      "customActivity": "Add your own activity",
+      "customActivityLabel": "Custom Activity",
+      "title": "Activity Type"
+    },
+    "ActivityTaskCard": {
+      "acceptChallenge": "Accept challenge 🔥",
+      "win": "Win"
+    },
+    "ChatBubbleExcuse": {
+      "heading": "How about pushing yourself a little with this challenge?",
+      "typeInput": "(Type your input below)"
+    },
+    "DailyActivityModal": {
+      "applyElixir": "Apply Elixir Potion",
+      "buyRepairStreak": "Buy a Streak Repair Elixir for {{elixirPrice}} 💎 to bring back your lost streak.",
+      "buyStreak": "Buy & Save Streak",
+      "loseStreak": "Let It Break",
+      "restorationStreak": "Bring your {{lostStreakValue}}-day streak back to life with the powerful Streak Repair Elixir!",
+      "streakBroken": "Streak broken. Save now.",
+      "streakRestore": "Streak at risk — restore it now!"
+    },
+    "DailyCheckInForm": {
+      "activitiesLimit": "Whoa there! Are you secretly training for the Olympics? You've already hit the {{MAX_DAILY_ACTIVITIES}}-activity for today! 🏅. You can flex those muscles again tomorrow 💪!",
+      "addActivity": "Add Activity",
+      "durationLonger": "The selected duration cannot be longer than 360 minutes",
+      "modalHeading": "What got you moving today? Log it and keep up the momentum"
+    },
+    "DailyCheckInStatus": {
+      "attendedMessage": "You showed up today, that's how progress is built. Keep going!",
+      "dailyCheckIn": "Daily Check-in",
+      "notAttendedMessage": "The couch wins today… but tomorrow, you're making a comeback!",
+      "unknownMessage": "Your journey starts with a single step. Ready to begin?"
+    },
+    "DurationSelector": {
+      "customDuration": "Enter duration (minutes)",
+      "customDurationLabel": "Custom Duration",
+      "heading": "Duration"
+    },
+    "EndScrollPlaceholder": {
+      "scrollToTop": "Scroll to Top"
+    },
+    "FreeTierStatus": {
+      "action": "Upgrade",
+      "heading": "Free scans",
+      "subheading": "Unlock unlimited scans by upgrading your plan"
+    },
+    "GoalsModal": {
+      "dailyCalories": "Daily Calories",
+      "heading": "Change your daily intake goal",
+      "saveGoals": "Save Goals"
+    },
+    "ImagePickerModal": {
+      "chooseFile": "Choose File",
+      "photoLibrary": "Photo Library",
+      "takePhoto": "Take Photo"
+    },
+    "Input": {
+      "labels": {
+        "email": "Email",
+        "emailVerification": "Email Verification",
+        "nickname": "Nickname"
+      }
+    },
+    "MacroOverview": {
+      "analysis": "Analysis",
+      "countToday": "Count for today",
+      "macroAdded": "Macro Added"
+    },
+    "MotivationBanner": {
+      "beatExcuse": "Beat your excuse now!",
+      "subtitle": "Pick a task, earn XP and gems—let’s move!",
+      "title": "No Motivation? Feeling off? Let's beat that excuse."
+    },
+    "NoActivityLogModal": {
+      "crushExcuse": "Crush my excuse",
+      "heading": "Oh no! Don't Let the couch win today!",
+      "skipToday": "Not today, maybe tomorrow..."
+    },
+    "PremiumFeaturesOverview": {
+      "first": "Track your bowel movements over time.",
+      "fourth": "Improve your gut score daily.",
+      "second": "Scan your stool with AI for instant insights.",
+      "third": "Get personalized nutrition tips from your AI nutritionist."
+    },
+    "ProgressBarLevel": {
+      "heading": "🎉 Maximum Level Reached! Level",
+      "xpLeft": "left to reach Level"
+    },
+    "PromptSection": {
+      "message": "Your scan is ready! Now, what would you like to find out?",
+      "prompts": {
+        "first": "What cell types or structures are present in this image?",
+        "fourth": "What insights can you provide from this image?",
+        "second": "Are there any abnormalities or pathogens in this sample?",
+        "third": "What is the likely origin or condition of this sample?"
+      }
+    },
+    "PurchaseItemModal": {
+      "gemsBalance": "Oops, you don’t have enough gems",
+      "inventoryAdded": "has been added to your inventory. Keep up the great work!",
+      "purchaseComplete": "Purchase Complete",
+      "purchaseFailed": "Purchase Failed",
+      "purchaseFailedMessage": "We couldn't process your purchase. Please check your gems balance and try again."
+    },
+    "ReportCard": {
+      "rating": "Rating"
+    },
+    "ScanReportCard": {
+      "promptMessage": "What is the reason?",
+      "reportTitlePlaceholder": "Add a title",
+      "unnamedConversation": "Untitled"
+    },
+    "ShopItemCard": {
+      "earnedId": "You Earned It.",
+      "equiped": "equiped",
+      "shop": "Shop",
+      "spendGems": "Spend your Gems wisely, your fitness journey just got interesting.",
+      "treat": "Now Treat Yourself!",
+      "unavailable": "Unavailable",
+      "worth": "worth"
+    },
+    "ShoppingPurchasedCard": {
+      "activated": "ACTIVATED",
+      "heading": "Protect your streak if you miss a day of practice.",
+      "manualTrigger": "MANUAL TRIGGER",
+      "owned": "OWNED"
+    },
+    "SkipReasonInput": {
+      "skipPlaceholder": "E.g. My cat ate my running shoes",
+      "skipToday": "Skip today",
+      "subtitle": "Want to share why today didn't work out? No pressure.",
+      "title": "That's okay, just checking in."
+    },
+    "StreakWarning": {
+      "repairStreak": "Repair Streak",
+      "streakElixirApplied": "Streak Repair Elixir Potion Kicked In!",
+      "streakFreeze": "Streak freeze!",
+      "streakFreezeApplied": " Your Streak Freeze Potion kicked in and protected your streak. You're still on fire!",
+      "streakFreezePotionApplied": "You saved your Streak! Your Streak Freeze Potion kicked in and protected your streak. You're still on fire!",
+      "streakPotionConsumed": "Streak Freeze Potion Consumed!",
+      "streakRepairExpired": " Your 48-hour streak repair window has expired! But hey, new streaks mean new opportunities to beat your personal best.",
+      "streakRepairUse": "Use your Streak Repair Elixir to keep your streak alive",
+      "streakResetNow": "Your streak was reset today."
+    },
+    "TapToViewLabel": {
+      "label": "Tap To View"
+    },
+    "TaskListOverview": {
+      "enjoyFreeTime": "Enjoy your free time.",
+      "heading": "Today's tasks",
+      "noTasks": "No Tasks!"
+    },
+    "TodayMacroOverview": {
+      "calories": "Calories",
+      "carbs": "Carbs",
+      "dailyIntakeGoals": "Daily Intake Goals",
+      "deleteMeal": "Delete Meal",
+      "deleteMealConfirm": "Are you sure you want to delete this meal? This action will impact your daily macro nutrients calculations.",
+      "fat": "Fat",
+      "heading": "Today's Macros",
+      "macroJournal": "Macro Journal",
+      "meals": "Meals",
+      "noActivityRecorded": "No activity recorded for this week",
+      "noMeals": "No meals logged",
+      "percentage": "% of daily macro goal achieved",
+      "protein": "Protein",
+      "scanFood": "Scan Food"
+    },
+    "UpgradeBanner": {
+      "heading": "Unlock Now!",
+      "moreBenefits": "AI features. All premium tools. All yours to stay on track.",
+      "upgradeMessage": "Unlock this feature 🔓 Enjoy AI calorie counting, macro tracking, and all-in-one support to help you reach your activity and fitness goals faster 💪",
+      "upgradeTo": "Upgrade to"
+    },
+    "UploadFileOptionsModal": {
+      "heading": "Choose a picture / video"
+    },
+    "WeekBlock": {
+      "week": "Week"
+    }
+  },
+  "deleteApp": {
+    "subtitle": "Send a feedback before",
+    "title": "Wait! Don't delete me!"
+  },
+  "general": {
+    "active": "active",
+    "activeSubscription": "Subscription active",
+    "activities": "Activities",
+    "analyzingMediaFilesPlaceholder": "Analyzing Media Files...",
+    "and": "and",
+    "askAssistant": "Ask AI assistant",
+    "attended": "Attended",
+    "attention": "Attention!",
+    "back": "Back",
+    "cancel": "Cancel",
+    "change": "Change",
+    "chatbotPlaceholder": "Ask me anything...",
+    "close": "Close",
+    "completed": "Completed",
+    "completedScans": "Scans completed",
+    "continue": "Continue",
+    "conversationHistory": "Conversation history",
+    "copyText": {
+      "copied": "Copied! 📝",
+      "copy": "Copy Link",
+      "loading": "Copying..."
+    },
+    "createdAt": "Created At",
+    "dearUser": "Dear user",
+    "delete": "Delete",
+    "download": "Download",
+    "edit": "Edit",
+    "error": "Error",
+    "files": "Files",
+    "free": "FREE",
+    "freeTrial": "Free trial",
+    "gallery": "Gallery",
+    "goBack": "Go Back",
+    "goodAfternoon": "Good Afternoon",
+    "goodEvening": "Good Evening",
+    "goodMorning": "Good Morning",
+    "loading": "Loading...",
+    "loadingMessages": {
+      "imageScanningLoading": {
+        "first": "Scanning your microcopy image, please hold tight...",
+        "fourth": "Almost there, finalizing the scan...",
+        "second": "Analyzing details, this may take a moment...",
+        "third": "Enhancing accuracy for the best results..."
+      },
+      "initialAppLoad": {
+        "first": "Loading your personalized experience...",
+        "fourth": "Almost ready, just a moment...",
+        "second": "Synchronizing systems...",
+        "third": "Processing your data..."
+      },
+      "loadingChatbot": {
+        "first": "Mojo, your AI Coach is getting ready to assist you...",
+        "second": "Hold on! Mojo is preparing your response...",
+        "third": "Thinking...Mojo is on it!"
+      }
+    },
+    "medicalDisclaimer": "Medical Disclaimer",
+    "minutes": "minutes",
+    "new": "New",
+    "next": "Next",
+    "no": "No",
+    "noPaymentNow": "No Payment Now. Cancel anytime.",
+    "ok": "Ok",
+    "online": "Online",
+    "openSettings": "Open Settings",
+    "or": "or",
+    "perMonth": "per month",
+    "perWeek": "per week",
+    "perYear": "per year",
+    "purchase": "Purchase",
+    "readyToStart": "Ready to start",
+    "restorePurchase": "Restore purchase",
+    "retake": "Retake",
+    "retry": "Retry",
+    "save": "Save",
+    "saveDiscount": "SAVE",
+    "scanNow": "Scan Now",
+    "scanning": "Scanning...",
+    "schedule": "Schedule",
+    "seeLess": "See less",
+    "seeMore": "See more",
+    "seeNotifications": "See notifications",
+    "share": "Share",
+    "shareLink": "Share Link",
+    "skip": "Skip",
+    "skipped": "Skipped",
+    "submit": "Submit",
+    "termsOfUse": "Terms of Use",
+    "then": "then",
+    "tryAgain": "Try again",
+    "tryForFree": "Try For Free",
+    "typing": "Typing...",
+    "unlockNow": "Unlock Now",
+    "update": "Update",
+    "upgradePlan": "Upgrade Plan",
+    "utils": "Utils",
+    "verifyEmail": "Verify email",
+    "viewProfile": "View Profile",
+    "welcome": "Hi",
+    "welcomeBack": "Welcome Back!",
+    "welcomeMessage": "Welcome!",
+    "yes": "Yes"
+  },
+  "home": {
+    "tab": "Home"
+  },
+  "internet": {
+    "noConnectionMessage": "Turn on mobile data or connect to a Wi-Fi. Or just take a break and go for a walk!",
+    "noConnectionTitle": "You're offline!"
+  },
   "onboarding": {
-    "message": "Welcome to Poop AI app site"
+    "firstFlow": {
+      "onboardingFirstPage": {
+        "headingOne": "Snap Your Meal & Track Calories",
+        "headingTwo": "Scan meals, talk to your AI Coach, and get daily challenges built for you"
+      },
+      "onboardingFourthPage": {
+        "headingOne": "Train. Earn. Level Up.",
+        "headingTwo": "Score XP, collect Gems, keep your Streak alive, and unlock rewards for showing up."
+      },
+      "onboardingSecondPage": {
+        "headingOne": "Let AI Power Your Fitness",
+        "headingTwo": "Meet Poop AI, your smart sidekick to crush doubt, spark motivation, and keep you moving"
+      },
+      "onboardingThirdPage": {
+        "heading": "Let AI detect gym equipment, exercise poses, and technique"
+      }
+    },
+    "message": "Welcome to Poop AI!"
+  },
+  "progress": {
+    "tab": "Progress"
+  },
+  "rootLayout": {
+    "screens": {
+      "chat": {
+        "fitnessCoach": "Your Fitness Coach",
+        "randomQuestions": {
+          "eight": "📊 Track my progress and show what I should improve next",
+          "eleven": "🛒 Create a healthy grocery list based on my diet plan",
+          "fifteen": "🤕 Modify my workout if I’m sore or injured",
+          "five": "⏱ Create a 20-minute workout for a busy day",
+          "four": "🏋️ Recommend a workout I can do right now with no equipment",
+          "fourteen": "⚡ Recommend a low-energy workout for today",
+          "nine": "🍽 Tell me what to eat today to hit my calorie and protein goals",
+          "one": "'📸 Snap a photo of my meal and estimate calories & macros',",
+          "seven": "💪 Design a muscle-building plan for my body and goals",
+          "six": "🔥 Suggest a fat-burning workout tailored to me",
+          "ten": "🥚 Calculate my daily protein, carbs, and fats",
+          "thirteen": "📅 Build a weekly workout schedule I can stick to",
+          "three": "🧠 Build me a personalized workout based on my fitness level",
+          "twelve": "😴 Adjust my workouts based on my sleep and recovery",
+          "two": "🥗 Analyze this meal and tell me how to improve it for my goal"
+        }
+      },
+      "contactUs": {
+        "customerSupport": "Customer Support",
+        "emailAddress": "Email Address",
+        "heading": "Feel free to email us directly, and our team will get back to you as soon as possible"
+      },
+      "excuseBuster": {
+        "crushExcuse": "Crush my excuse",
+        "excuseMotivation": "You're Tougher Than Your Excuse.",
+        "excuseQuestion": "What's holding you back today?",
+        "heading": "Excuse Buster",
+        "reasons": {
+          "eight": "I’ll start tomorrow",
+          "five": "Not in the mood",
+          "four": "Gym is too crowded",
+          "nine": "Unsure what to do",
+          "one": "Feeling too tired",
+          "seven": "Work is hectic",
+          "six": "Bad weather outside",
+          "ten": "No equipment available",
+          "three": "Too sore to exercise",
+          "two": "No time available"
+        },
+        "typeExcuse": "Type your excuse here..."
+      },
+      "experienceLevelScreen": {
+        "heading": "How would you describe your fitness experience?"
+      },
+      "filePreviewScreen": {
+        "generateReportButton": "Start Analysis"
+      },
+      "fitnessGoalScreen": {
+        "heading": "What's your fitness goal?"
+      },
+      "forgotPassword": {
+        "alertSubtitle": "If an account with this email exists, we have sent you a password reset link.",
+        "alertTitle": "Password Reset Sent",
+        "heading": "Forgot Password",
+        "loginAccount": "Login to your account",
+        "rememberPassword": "Remembered password?",
+        "verificationHeading": "Enter the email address registered with your account. We'll send you a link to reset your password.",
+        "verificationSent": "Please check your email for a password reset link. If you don't see it in your inbox, be sure to check your spam or junk folder."
+      },
+      "freeTrialPreview": {
+        "heading": "Enjoy your free trial! 🎉",
+        "review": "Great app for tracking my poop. The AI nutritionist gives helpful tips, and I like AI poop scan feature.",
+        "reviewTrust": "📈 Trusted by 7,512+ users",
+        "subheading": "Experience these amazing benefits during your free trial"
+      },
+      "genderSelectionScreen": {
+        "heading": "Select gender for a more tailored experience"
+      },
+      "generateReportScreen": {
+        "conversationName": "Conversation name",
+        "medicalReport": "Fitness Report",
+        "report": "AI-Generated Fitness Report",
+        "title": "We appreciate your patience! Here’s your AI report. ",
+        "userInput": "Your Submission"
+      },
+      "login": {
+        "agreeingMessage": "By continuing, you agree to our",
+        "confirmPassword": "Confirm Password",
+        "continueName": "Continue with Nickname",
+        "createPassword": "Create a password",
+        "emailAddress": "Email Address",
+        "emailPlaceholder": "Enter your email",
+        "existingAccount": "Do you have an account?",
+        "forgotPassword": "Forgot Password",
+        "heading": "Login",
+        "keepSigned": "Keep me signed in",
+        "password": "Password",
+        "privacyPolicy": "Privacy Policy",
+        "termsAndConditions": "Terms & Conditions"
+      },
+      "namePreferenceScreen": {
+        "heading": "Let's make this personal!",
+        "placeholderPreferredName": "E.g., Captain Cool, Queen Bee, or just Alex!",
+        "preferredNameQuestion": "What should we call you?"
+      },
+      "newAppVersionScreen": {
+        "action": "Get it now!",
+        "heading": "A new version of Poop AI is available",
+        "subheading": "Update to the latest version to continue enjoying all app features — it only takes 5 seconds!"
+      },
+      "noInternetScreen": {
+        "heading": "You are offline",
+        "subheading": "Your connection seems to be unstable. Please verify your network status and try again"
+      },
+      "notifications": {
+        "emptyNotifications": "No new notifications for now. Check back soon.",
+        "noNotifications": "No Notifications Yet",
+        "title": "Notifications"
+      },
+      "onboarding": {
+        "firstOnboarding": {
+          "subtitle": "Hard to remember when was the last poop? Track everytime now",
+          "title": "Daily Poop Tracking"
+        },
+        "secondOnboarding": {
+          "subtitle": "Snap a photo of your poop and let our AI provide an instant analysis",
+          "title": "Instant AI Stool Analysis"
+        },
+        "thirdOnboarding": {
+          "subtitle": "Get a personalized rating from 1–100% based on your poop analysis",
+          "title": "What is your Gut Score?"
+        }
+      },
+      "paywallOnboarding": {
+        "freeTierOfferings": {
+          "firstOffering": "Activity Tracker & Smart Nutrition Tips",
+          "fourthOffering": "Your AI Fitness Coach 24/7",
+          "freeTrialEnabled": "Free Trial Enabled",
+          "heading": " Unlimited Access",
+          "secondOffering": "Unlimited Calorie & Macro Counter",
+          "thirdOffering": "Unlimited Food Scanner",
+          "title": "Unlock Premium Features Today!"
+        }
+      },
+      "paywallUpgradeScreen": {
+        "fourthOffering": {
+          "plan": "Weekly Plan",
+          "subtitle": "{{ price }} per year",
+          "title": "{{trialDays}}-Day Trial"
+        },
+        "heading": "Unlock Premium Features Today!",
+        "secondOffering": {
+          "subtitle": "{{ price }}/month",
+          "title": "Monthly Plan"
+        },
+        "thirdOffering": {
+          "subtitle": "{{ price }} per year",
+          "title": "Yearly Plan"
+        }
+      },
+      "privacyPolicy": {
+        "title": "Privacy Policy"
+      },
+      "profile": {
+        "edit": "Edit Profile",
+        "permanentAccount": "Permanent account",
+        "placeholderPreferredName": "E.g., Captain Cool, Queen Bee, or just Alex!",
+        "subscriptions": {
+          "monthly": "Monthly Subscription",
+          "weekly": "Weekly Subscription",
+          "yearly": "Yearly Subscription"
+        },
+        "temporaryAccount": "Temporary account",
+        "title": "Profile"
+      },
+      "progress": {
+        "WeeklyComparisonXp": "Weekly Comparison",
+        "activities": "Activities",
+        "activityFocus": "Activity Focus",
+        "activityPattern": "Activity Pattern",
+        "activityReview": "You've completed {{totalActivities}} activities and earned {{totalXp}} XP total. Keep it up!",
+        "averageSession": "Avg Session",
+        "bestDay": "Best Day",
+        "choice": "Your go-to choice",
+        "consistency": "Consistency",
+        "consistencyJourney": "Your consistency journey",
+        "distribution": "Distribution",
+        "error": "Something went wrong",
+        "favoriteActivity": "Favorite Activity",
+        "heading": "Progress Dashboard",
+        "history": "History",
+        "hoursBreakdown": "24-hour breakdown",
+        "insights": "Quick Insights",
+        "last30Days": "Last 30 days",
+        "lastMonths": "Last 6 months",
+        "lastSevenDays": "Last 7 days",
+        "lastWeek": "Last Week",
+        "lastWeekXP": "vs last week",
+        "longest": "Longest",
+        "monthlyActivity": "Monthly Activity",
+        "monthlyEarned": "Monthly earned",
+        "monthlyGoal": "Monthly Goal",
+        "mostActive": "Most Active",
+        "outstanding": "Outstanding Progress!",
+        "overview": "Overview",
+        "peakTime": "Peak performance time",
+        "performance": "Performance",
+        "progression": "Progression",
+        "recentActivity": "Recent Activity",
+        "reliability": "reliability",
+        "statistics": "Detailed Statistics",
+        "subheading": "Keep up the amazing work! 🚀",
+        "thisWeek": "This Week's",
+        "thisWeeks": "This Week",
+        "totalHours": "Total Hours",
+        "totalMonthActivities": "Physical Activities Completed This Month!",
+        "trends": "Trends",
+        "weeklyChange": "Weekly Change",
+        "weeklyGoals": "Weekly Goals",
+        "weeksComparison": "This week vs last week"
+      },
+      "rate": {
+        "title": "Give us a feedback!"
+      },
+      "rateAppScreen": {
+        "dislike": "Not really...",
+        "heading": "Are you finding the app valuable and engaging?",
+        "like": "Yes, I like it!"
+      },
+      "scan": {
+        "askAssistant": "Ask your AI Fitness Coach",
+        "cameraPermission": "Camera access permission is required to use this feature",
+        "requestPermission": "Requesting camera permission...",
+        "scanAnything": "Scan Anything: Meals, Food, Gym Gear & More"
+      },
+      "share": {
+        "heading": "Share Poop AI App",
+        "scanMessage": "Scan to download the app",
+        "shareMessage": "or share via your favorite platform",
+        "subheading": "Help others discover Poop AI App",
+        "title": "Share"
+      },
+      "shoppingCart": {
+        "buyPotions": "Head over to the shop and collect some exciting potions",
+        "equipMore": "Equip More",
+        "goToShop": "Go to shop",
+        "heading": "Items Owned",
+        "noItems": "You Don't Own Any Items Yet!"
+      },
+      "signUp": {
+        "acceptTerms": {
+          "subtitle": "Please accept the terms of use and privacy policy to continue.",
+          "title": "Terms Required"
+        },
+        "haveAccount": "Have an account?",
+        "heading": "Sign Up",
+        "signInHere": "Sign in here"
+      },
+      "termsOfService": {
+        "title": "Terms of Service"
+      },
+      "upgradeAccount": {
+        "emailPasswordRequired": "Please enter both email and password.",
+        "permanentAccount": "Create a permanent account to save your data across devices.",
+        "secureProgress": "Secure Your Progress"
+      },
+      "verifyAuthCode": {
+        "backToLogin": "Back to Sign In",
+        "resendCode": "Resend code",
+        "verificationCodeHeading": "Enter your verification code sent via email. Please note, the code will expire in 5 minutes.",
+        "verificationCodeMissing": "Didn't get the code?",
+        "verificationCodeSent": "We have sent the verification code to"
+      },
+      "verifyEmail": {
+        "heading": "Verify email"
+      },
+      "welcome": {
+        "accountButton": "I already have an account",
+        "activity": "Activity",
+        "calories": "Calories",
+        "count": "Count",
+        "heading": "Welcome to Poop AI!",
+        "startButton": "Let's get started!",
+        "track": "Track",
+        "with": "With"
+      }
+    }
   },
   "settings": {
     "about": "About",
     "app_name": "App Name",
-    "arabic": "Arabic",
-    "english": "English",
+    "citations": "Citations for medical information",
+    "contactUs": "Contact us",
+    "deactivateAccount": "Deactivate & Delete Account",
+    "deleteAccount": "Delete account?",
+    "deleteAccountQuestion": "Are you sure you want to delete your account? This action cannot be undone and will permanently remove all your data.",
+    "devMode": {
+      "componentsLibrary": "UI library",
+      "title": "Developer mode"
+    },
+    "faq": "FAQ",
     "generale": "General",
     "github": "Github",
     "language": "Language",
+    "languages": {
+      "arabic": "Arabic",
+      "catalan": "Catalan",
+      "croatian": "Croatian",
+      "czech": "Czech",
+      "danish": "Danish",
+      "dutch": "Dutch",
+      "english": "English",
+      "finnish": "Finnish",
+      "french": "French",
+      "french_canada": "French (Canada)",
+      "german": "German",
+      "greek": "Greek",
+      "hebrew": "Hebrew",
+      "hindi": "Hindi",
+      "hungarian": "Hungarian",
+      "indonesian": "Indonesian",
+      "italian": "Italian",
+      "japanese": "Japanese",
+      "korean": "Korean",
+      "malay": "Malay",
+      "mandarin_chinese": "Chinese",
+      "norwegian": "Norwegian",
+      "polish": "Polish",
+      "portuguese_brazil": "Portuguese (Brazil)",
+      "portuguese_portugal": "Portuguese (Portugal)",
+      "romanian": "Romanian",
+      "russian": "Russian",
+      "slovak": "Slovak",
+      "spanish_mexico": "Spanish (Mexico)",
+      "spanish_spain": "Spanish (Spain)",
+      "swedish": "Swedish",
+      "thai": "Thai",
+      "turkish": "Turkish",
+      "ukrainian": "Ukrainian",
+      "vietnamese": "Vietnamese"
+    },
     "links": "Links",
     "logout": "Logout",
     "more": "More",
+    "permanentAccountCreate": "Create permanent account",
     "privacy": "Privacy Policy",
-    "rate": "Rate",
+    "profile": "Profile",
+    "rate": "Give us feedback",
     "share": "Share",
+    "shop": "Shop",
     "support": "Support",
     "support_us": "Support Us",
+    "tab": "Settings",
     "terms": "Terms of Service",
     "theme": {
       "dark": "Dark",
@@ -29,5 +790,12 @@
     "version": "Version",
     "website": "Website"
   },
-  "welcome": "Welcome to Poop AI app site"
+  "uploadScan": {
+    "scanNow": "Scan now",
+    "title": "Upload image"
+  },
+  "weekDays": {
+    "today": "Today",
+    "yesterday": "Yesterday"
+  }
 }

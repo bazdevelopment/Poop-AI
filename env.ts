@@ -16,6 +16,7 @@ const envSchema = z.object({
   EXPO_PUBLIC_GOOGLE_SERVICES_JSON_PATH: z.string().optional(),
   // only available for app.config.ts usage
   APP_BUILD_ONLY_VAR: z.string().optional(),
+  EXPO_PUBLIC_EAS_PROJECT_ID: z.string().optional(),
 });
 
 // Config records per environment
@@ -61,6 +62,7 @@ const _env: z.infer<typeof envSchema> = {
     process.env.EXPO_PUBLIC_GOOGLE_SERVICES_PLIST_PATH,
   EXPO_PUBLIC_GOOGLE_SERVICES_JSON_PATH:
     process.env.EXPO_PUBLIC_GOOGLE_SERVICES_JSON_PATH,
+  EXPO_PUBLIC_EAS_PROJECT_ID: process.env.EXPO_PUBLIC_EAS_PROJECT_ID,
 };
 
 function getValidatedEnv(env: z.infer<typeof envSchema>) {

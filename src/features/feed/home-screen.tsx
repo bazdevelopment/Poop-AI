@@ -1,7 +1,8 @@
 import { getCalendars } from 'expo-localization';
+import { router } from 'expo-router';
 // import { Activity, ArrowDown, ArrowUp, Info } from 'lucide-react-native';
 import * as React from 'react';
-import { Image, ScrollView, TouchableOpacity } from 'react-native';
+import { Image, ScrollView, Touchable, TouchableOpacity } from 'react-native';
 import Svg, { Circle } from 'react-native-svg';
 import { useGetCalendarActivityLog } from '@/api/activity-logs/activity-logs.hooks';
 import { useAllUserConversations } from '@/api/conversation/conversation.hooks';
@@ -103,7 +104,15 @@ function CircularProgress({ score }) {
   const strokeDashoffset = circumference - (score / 100) * circumference;
 
   return (
-    <View className="relative my-8 items-center justify-center">
+    <TouchableOpacity
+      className="relative my-8 items-center justify-center"
+      onPress={() =>
+        router.navigate({
+          pathname: '/gut-states',
+          params: { score },
+        })
+      }
+    >
       <Svg width={size} height={size}>
         {/* Background Circle */}
         <Circle
@@ -149,7 +158,7 @@ function CircularProgress({ score }) {
         </View>
         <Text className={`mt-2 font-semibold ${textClass}`}>{label}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
@@ -290,7 +299,7 @@ export function HomeScreen() {
   return (
     // <SafeAreaView className="h-200 bg-red-200">
     <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
-    <SafeAreaView>
+      <SafeAreaView>
         <Branding
           isLogoVisible
           className="ml-4"

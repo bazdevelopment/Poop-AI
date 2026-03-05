@@ -8,10 +8,12 @@ import { StyleSheet } from 'react-native';
 import FlashMessage from 'react-native-flash-message';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { KeyboardProvider } from 'react-native-keyboard-controller';
+import { Toaster } from 'sonner-native';
+import { APIProvider } from '@/api/common';
 import { useThemeConfig } from '@/components/ui/use-theme-config';
 import { hydrateAuth } from '@/features/auth/use-auth-store';
-import { APIProvider } from '@/lib/api';
-import { loadSelectedTheme } from '@/lib/hooks/use-selected-theme';
+import { loadSelectedTheme } from '@/hooks';
+import { DEVICE_TYPE } from '@/utilities/device-type';
 // Import  global CSS file
 import '../global.css';
 
@@ -45,6 +47,39 @@ export default function RootLayout() {
         <Stack.Screen name="(app)" options={{ headerShown: false }} />
         <Stack.Screen name="onboarding" options={{ headerShown: false }} />
         <Stack.Screen name="login" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="welcome"
+          options={{
+            headerShown: false,
+            ...(DEVICE_TYPE.IOS && {
+              animation: 'fade',
+              animationDuration: 500,
+            }),
+          }}
+        />
+        <Stack.Screen
+          name="new-app-version"
+          options={{
+            headerShown: false,
+            gestureEnabled: false,
+            presentation: 'fullScreenModal',
+          }}
+        />
+        <Stack.Screen
+          name="gut-states"
+          options={{
+            headerShown: false,
+            gestureEnabled: false,
+          }}
+        />
+        <Stack.Screen
+          name="paywall-new"
+          options={{
+            headerShown: false,
+            gestureEnabled: false,
+            presentation: 'modal',
+          }}
+        />
       </Stack>
     </Providers>
   );
@@ -63,7 +98,10 @@ function Providers({ children }: { children: React.ReactNode }) {
           <APIProvider>
             <BottomSheetModalProvider>
               {children}
-              <FlashMessage position="top" />
+              <Toaster
+                autoWiggleOnUpdate="toast-change"
+                pauseWhenPageIsHidden
+              />
             </BottomSheetModalProvider>
           </APIProvider>
         </ThemeProvider>

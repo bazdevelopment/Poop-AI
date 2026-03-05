@@ -3,8 +3,8 @@ import type { OptionType } from '@/components/ui';
 import type { ColorSchemeType } from '@/hooks';
 import * as React from 'react';
 import { Options, useModal } from '@/components/ui';
+import { useSelectedTheme } from '@/hooks';
 
-import { useSelectedTheme } from '@/lib/hooks';
 import { translate } from '@/lib/i18n';
 import { Item } from './item';
 
