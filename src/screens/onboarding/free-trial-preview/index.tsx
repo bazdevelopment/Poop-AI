@@ -69,7 +69,7 @@ function SocialProofCard() {
 
 function FreeTrialPreview({ onFinish }) {
   const { SHOW_SOCIAL_PROOF_ONBOARDING } = useRemoteConfig();
-  console.log('onFinish', onFinish);
+
   useEffect(() => {
     requestAppRatingWithDelay(500);
   }, []);

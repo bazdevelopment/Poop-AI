@@ -75,10 +75,6 @@
     <true/>
     <key>UIAppFonts</key>
     <array>
-      <string>Inter_400Regular.ttf</string>
-      <string>Inter_500Medium.ttf</string>
-      <string>Inter_600SemiBold.ttf</string>
-      <string>Inter_700Bold.ttf</string>
       <string>Poppins_400Regular.ttf</string>
       <string>Poppins_500Medium.ttf</string>
       <string>Poppins_600SemiBold.ttf</string>

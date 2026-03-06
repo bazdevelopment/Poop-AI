@@ -287,7 +287,7 @@ function PaywallNew() {
     },
     {
       title: translate(
-        'rootLayout.screens.paywallOnboarding.freeTierOfferings.fourthOffering',
+        'rootLayout.screens.paywallOnboarding.freeTierOfferings.secondOffering',
       ),
       icon: <CheckboxIcon />,
     },
@@ -297,12 +297,12 @@ function PaywallNew() {
       ),
       icon: <CheckboxIcon />,
     },
-    // {
-    //   title: translate(
-    //     'rootLayout.screens.paywallOnboarding.freeTierOfferings.secondOffering'
-    //   ),
-    //   icon: <CheckboxIcon />,
-    // },
+    {
+      title: translate(
+        'rootLayout.screens.paywallOnboarding.freeTierOfferings.fourthOffering',
+      ),
+      icon: <CheckboxIcon />,
+    },
   ];
 
   const handlePurchase = async () => {
@@ -392,7 +392,7 @@ function PaywallNew() {
           </View>
 
           {/* Title */}
-          <Text className="font-extra-bold-poppins mb-6 text-center text-3xl text-gray-900">
+          <Text className="mb-6 text-center font-bold-poppins text-3xl text-gray-900">
             {translate(
               'rootLayout.screens.paywallOnboarding.freeTierOfferings.heading',
             )}

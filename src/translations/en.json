@@ -561,12 +561,12 @@
       },
       "paywallOnboarding": {
         "freeTierOfferings": {
-          "firstOffering": "Activity Tracker & Smart Nutrition Tips",
-          "fourthOffering": "Your AI Fitness Coach 24/7",
+          "firstOffering": "Track Your Poop Daily",
+          "fourthOffering": "Monitor Bowel Movements & Gut Score",
           "freeTrialEnabled": "Free Trial Enabled",
           "heading": " Unlimited Access",
-          "secondOffering": "Unlimited Calorie & Macro Counter",
-          "thirdOffering": "Unlimited Food Scanner",
+          "secondOffering": "Stool Scanning & AI Analysis",
+          "thirdOffering": "AI Nutritionist 24/7 (Unlimited Chat)",
           "title": "Unlock Premium Features Today!"
         }
       },

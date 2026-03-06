@@ -2,12 +2,7 @@ import type { PressableProps } from 'react-native';
 import { MotiView } from 'moti';
 import * as React from 'react';
 import { useCallback } from 'react';
-import {
-  I18nManager,
-  Pressable,
-
-  View,
-} from 'react-native';
+import { I18nManager, Pressable, View } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 
 import colors from '@/components/ui/colors';
@@ -127,15 +122,13 @@ function CheckboxBase({
   return (
     <CheckboxRoot checked={checked} testID={testID} {...props}>
       <CheckboxIcon checked={checked} />
-      {label
-        ? (
-            <Label
-              text={label}
-              testID={testID ? `${testID}-label` : undefined}
-              className="pr-2"
-            />
-          )
-        : null}
+      {label ? (
+        <Label
+          text={label}
+          testID={testID ? `${testID}-label` : undefined}
+          className="pr-2"
+        />
+      ) : null}
     </CheckboxRoot>
   );
 }
@@ -189,11 +182,9 @@ function RadioBase({
   return (
     <RadioRoot checked={checked} testID={testID} {...props}>
       <RadioIcon checked={checked} />
-      {label
-        ? (
-            <Label text={label} testID={testID ? `${testID}-label` : undefined} />
-          )
-        : null}
+      {label ? (
+        <Label text={label} testID={testID ? `${testID}-label` : undefined} />
+      ) : null}
     </RadioRoot>
   );
 }
@@ -209,7 +200,7 @@ export function SwitchIcon({ checked = false }: IconProps) {
     ? THUMB_OFFSET
     : WIDTH - THUMB_WIDTH - THUMB_OFFSET;
 
-  const backgroundColor = checked ? colors.primary[300] : colors.charcoal[400];
+  const backgroundColor = checked ? colors.success[500] : colors.charcoal[400];
 
   return (
     <View className="w-[50px] justify-center">
@@ -256,11 +247,9 @@ function SwitchBase({
   return (
     <SwitchRoot checked={checked} testID={testID} {...props}>
       <SwitchIcon checked={checked} />
-      {label
-        ? (
-            <Label text={label} testID={testID ? `${testID}-label` : undefined} />
-          )
-        : null}
+      {label ? (
+        <Label text={label} testID={testID ? `${testID}-label` : undefined} />
+      ) : null}
     </SwitchRoot>
   );
 }
